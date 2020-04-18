@@ -5,14 +5,47 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-       <p class="alert"><%= alert %></p>
+      <!-- Navigation Bar -->
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+          <%= link_to "ITI", root_path, class: "navbar-brand" %>
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item"><%= link_to "Home", root_path, class: "nav-link" %></li>
+                <li class="nav-item"><%= link_to "Group", groups_path, class: "nav-link" %></li>
+                <li class="nav-item"><%= link_to "Orders", orders_path, class: "nav-link" %></li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+              <% if user_signed_in? %>
+                <li class="nav-item ml-auto"><%= link_to "Log out", signout_path, method: :delete, class: "nav-link btn btn-danger text-light" %></li>
+              <% else %>
+                <li class="nav-item ml-auto"><%= link_to "Sign up", signup_path, class: "nav-link btn btn-primary text-light mr-1" %></li>
+                <li class="nav-item ml-auto"><%= link_to "Sign in", signin_path, class: "nav-link btn btn-success text-light" %></li>
+              <% end %>
+            </ul>
+        </div>
+      </nav>
 
-    <%= yield %>
+      <!--Flash Messages -->
+
+      <% flash.each do |name, message| %>
+        <%= content_tag(:div,message, class: "alert alert-info #{name}") %>
+      <% end %>
+      <!-- Page Content -->
+      <%= yield %>
+      
+      <!-- Footer -->
+      <footer class="small text-muted">
+        <div class="container">
+          <hr>
+          <center>
+            <p>© 2019 ITI Mansoura Branch</p>
+          </center>
+        </div>
+      </footer>
   </body>
 </html>
