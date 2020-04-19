@@ -14,7 +14,13 @@
   <% end %>
   </div>
   <%= f.submit "Log in", class: "btn btn-primary" %>
-<% end %>
+  <% end %>
+  <%= link_to "Home", class: "btn btn-block btn-social btn-facebook " do %>
+    <span class="fab fa-facebook fa-2x text-primary m-1"></span><strong>Sign in with facebook</strong>
+  <% end %>
+  <%= link_to "Home", class: "btn btn-block btn-social btn-google" do %>
+    <span class="fab fa-google fa-2x text-danger m-1"></span><strong>Sign in with Google</strong>
+  <% end %>
   <center>
   or <%= render "devise/shared/links" %>
   </center>
