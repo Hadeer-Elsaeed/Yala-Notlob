@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :orders
   resources :groups
-  devise_for :users
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth' }
   as :user do
   	# Customize root for user 
   	get "signin" => 'devise/sessions#new'

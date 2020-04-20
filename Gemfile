@@ -14,6 +14,12 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'sprockets-rails', '~> 3.2'
 gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.2'
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
+# gem 'koala', '~> 3.0.0'
+gem 'devise_token_auth'
+gem 'activerecord-session_store'
 
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', '~> 1.4'
