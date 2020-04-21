@@ -24,6 +24,7 @@
             <ul class="navbar-nav ml-auto">
               <% if user_signed_in? %>
                 <li class="nav-item ml-auto"><%= link_to "Log out", signout_path, method: :delete, class: "nav-link btn btn-danger text-light" %></li>
+                <li class="nav-item ml-2 btn text-light "> Welcome: <strong class="text-success m-2"><%= current_user.name %></strong></li>
               <% else %>
                 <li class="nav-item ml-auto"><%= link_to "Sign up", signup_path, class: "nav-link btn btn-primary text-light mr-1" %></li>
                 <li class="nav-item ml-auto"><%= link_to "Sign in", signin_path, class: "nav-link btn btn-success text-light" %></li>
