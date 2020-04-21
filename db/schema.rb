@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_17_223228) do
+ActiveRecord::Schema.define(version: 2020_04_20_234938) do
+
+  create_table "friendships", force: :cascade do |t|
+    t.integer "Group_id", null: false
+    t.integer "User_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["Group_id"], name: "index_friendships_on_Group_id"
+    t.index ["User_id"], name: "index_friendships_on_User_id"
+  end
 
   create_table "groups", force: :cascade do |t|
     t.string "name"
@@ -43,6 +52,8 @@ ActiveRecord::Schema.define(version: 2020_04_17_223228) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "friendships", "Groups"
+  add_foreign_key "friendships", "Users"
   add_foreign_key "groups", "Users"
   add_foreign_key "orders", "Users"
 end
