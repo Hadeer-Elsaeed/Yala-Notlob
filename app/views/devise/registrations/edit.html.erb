@@ -43,7 +43,7 @@
 <center>
   <h3>Remove my account</h3>
 
-  <p class="text-danger">Unhappy? <%= button_to "Cancel my account",registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+  <p class="text-danger">Unhappy? <%= button_to "Cancel my account",registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, :class => "btn btn-danger"%></p>
 
   <%= link_to "Back", :back %>
 </center>
