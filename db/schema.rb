@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_21_112709) do
+ActiveRecord::Schema.define(version: 2020_04_22_152151) do
 
   create_table "friendships", force: :cascade do |t|
     t.integer "Group_id", null: false
@@ -29,6 +29,37 @@ ActiveRecord::Schema.define(version: 2020_04_21_112709) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["User_id"], name: "index_groups_on_User_id"
+  end
+
+  create_table "order_details", force: :cascade do |t|
+    t.string "item"
+    t.integer "amount"
+    t.integer "price"
+    t.integer "comment"
+    t.integer "user_id", null: false
+    t.integer "order_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["order_id"], name: "index_order_details_on_order_id"
+    t.index ["user_id"], name: "index_order_details_on_user_id"
+  end
+
+  create_table "order_friends", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "order_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["order_id"], name: "index_order_friends_on_order_id"
+    t.index ["user_id"], name: "index_order_friends_on_user_id"
+  end
+
+  create_table "order_groups", force: :cascade do |t|
+    t.integer "group_id", null: false
+    t.integer "order_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["group_id"], name: "index_order_groups_on_group_id"
+    t.index ["order_id"], name: "index_order_groups_on_order_id"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -68,5 +99,11 @@ ActiveRecord::Schema.define(version: 2020_04_21_112709) do
   add_foreign_key "friendships", "Groups"
   add_foreign_key "friendships", "Users"
   add_foreign_key "groups", "Users"
+  add_foreign_key "order_details", "orders"
+  add_foreign_key "order_details", "users"
+  add_foreign_key "order_friends", "orders"
+  add_foreign_key "order_friends", "users"
+  add_foreign_key "order_groups", "groups"
+  add_foreign_key "order_groups", "orders"
   add_foreign_key "orders", "Users"
 end

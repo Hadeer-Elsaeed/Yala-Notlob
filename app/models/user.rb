@@ -12,6 +12,11 @@ has_many :followees, through: :followed_users
 
 has_many :following_users, foreign_key: :followee_id, class_name: 'Friendship'
 has_many :followers, through: :following_users
+
+has_many:order_friend
+has_many:orders, through: :order_friend
+
+has_many:order_details
   before_save { self.email = email.downcase }
   validates :name, presence: true
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
