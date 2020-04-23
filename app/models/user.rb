@@ -30,8 +30,6 @@ has_many:order_details
             user.email = provider_data.info.email
             user.name = provider_data.info.name
             user.password = Devise.friendly_token[0, 20]
-            user.skip_confirmation!
-            user.save!
           end
         end
 end
