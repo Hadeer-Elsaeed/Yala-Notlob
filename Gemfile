@@ -21,6 +21,8 @@ gem 'bootstrap-social-rails'
 # gem 'koala', '~> 3.0.0'
 gem 'devise_token_auth'
 gem 'activerecord-session_store'
+gem 'world-flags', '~> 0.6.5'
+gem 'carrierwave', '~> 2.0'
 
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', '~> 1.4'

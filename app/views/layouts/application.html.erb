@@ -8,7 +8,7 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.0/css/all.css" integrity="sha384-Mmxa0mLqhmOeaE8vgOSbKacftZcsNYDjQzuCOm6D02luYSzBG8vpaOykv9lFQ51Y" crossorigin="anonymous">
-
+    <script type="text/javascript">if (window.location.hash == '#_=_')window.location.hash = '';</script>
   </head>
   <body>
       <!-- Navigation Bar -->
@@ -24,6 +24,9 @@
             <ul class="navbar-nav ml-auto">
               <% if user_signed_in? %>
                 <li class="nav-item ml-auto"><%= link_to "Log out", signout_path, method: :delete, class: "nav-link btn btn-danger text-light" %></li>
+                <li class="nav-item ml-2">
+                <%= image_tag("user.jpg", {:style => "width:50px;height:50px;border-radius:50%"}) %>
+                </li>      
                 <li class="nav-item ml-2 btn text-light "> Welcome: <strong class="text-success m-2"><%= current_user.name %></strong></li>
               <% else %>
                 <li class="nav-item ml-auto"><%= link_to "Sign up", signup_path, class: "nav-link btn btn-primary text-light mr-1" %></li>
@@ -46,7 +49,7 @@
         <div class="container">
           <hr>
           <center>
-            <p>© 2019 ITI Mansoura Branch</p>
+            <p class="lead">© 2019 ITI Mansoura Branch</p>
           </center>
         </div>
       </footer>
