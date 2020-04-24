@@ -21,6 +21,10 @@ class OrdersController < ApplicationController
   def edit
   end
 
+  def chngstatus
+
+  end
+
   # POST /orders
   # POST /orders.json
   def create
