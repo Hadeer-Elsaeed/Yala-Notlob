@@ -3,6 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   has_many :groups
   has_many :orders
+  has_one_attached :avatar
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatables,
          :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
@@ -12,6 +13,11 @@ has_many :followees, through: :followed_users
 
 has_many :following_users, foreign_key: :followee_id, class_name: 'Friendship'
 has_many :followers, through: :following_users
+
+has_many:order_friend
+has_many:orders, through: :order_friend
+
+has_many:order_details
   before_save { self.email = email.downcase }
   validates :name, presence: true
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -25,8 +31,6 @@ has_many :followers, through: :following_users
             user.email = provider_data.info.email
             user.name = provider_data.info.name
             user.password = Devise.friendly_token[0, 20]
-            user.skip_confirmation!
-            user.save!
           end
         end
 end

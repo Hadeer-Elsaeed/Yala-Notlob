@@ -1,5 +1,6 @@
+
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <h2>Log in</h2>
+  <h2 class="text-center login_h2">Log in</h2>
   <div class="form-group">
   <%= f.label :email %><%= f.email_field :email, autofocus: true, class: "form-control", placeholder:
   "user@example.com" %>
@@ -16,5 +17,15 @@
   <%= f.submit "Log in", class: "btn btn-primary" %>
   <% end %>
   <center>
-  or <%= render "devise/shared/links" %>
-  </center>
+<div class="form-group m-3">
+    <%= render "devise/shared/links" %>
+    <%= link_to user_facebook_omniauth_authorize_path, class: "btn btn-social btn-facebook" do %>
+      <span class="fab fa-facebook-f"></span> Sign in with facebook
+    <% end %>
+
+    <%= link_to user_google_oauth2_omniauth_authorize_path, class: "btn btn-social btn-google" do %>
+      <span class="fab fa-google"></span> Sign in with Google
+    <% end %>
+</div>
+</center>
+
