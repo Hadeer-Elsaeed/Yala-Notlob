@@ -5,4 +5,6 @@ class Order < ApplicationRecord
   has_many:order_groups
   has_many:groups, through: :order_groups
   has_many:order_details
+  # has_one_attached :avatar
+  has_one_attached :image
 end

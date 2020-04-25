@@ -9,6 +9,8 @@
       <th>Resturant</th>
       <th>Status</th>
       <th>User</th>
+      <th>image</th>
+
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -20,6 +22,11 @@
         <td><%= order.resturant %></td>
         <td><%= order.status %></td>
         <td><%= order.User_id %></td>
+        <td>
+        <% if order.image.attached? %>
+        <img src="<%=(url_for(order.image))  %>" width="100" height="100"/>
+        <% end %>
+           </td>
         <td><%= link_to 'Show', order %></td>
         <td><%= link_to 'Edit', edit_order_path(order) %></td>
         <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>

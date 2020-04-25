@@ -24,8 +24,10 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.json
   def create
+    #print order_params;
     @order = Order.new(order_params)
-
+    @order.User = current_user if current_user
+    @order.status="waiting"
     respond_to do |format|
       if @order.save
         format.html { redirect_to @order, notice: 'Order was successfully created.' }
@@ -69,6 +71,6 @@ class OrdersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def order_params
-      params.require(:order).permit(:meal, :resturant, :status, :User_id)
+      params.require(:order).permit(:meal, :resturant, :status, :User_id,:image)
     end
 end
