@@ -1,3 +1,8 @@
+<div class="row">
+
+
+<div class="col-md-6"> 
+
 <%= form_with(model: order, local: true) do |form| %>
   <% if order.errors.any? %>
     <div id="error_explanation">
@@ -11,27 +16,38 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :meal %>
-    <%= form.text_field :meal %>
+  <div class="form-group">
+  <%= form.label :meal,'Order for' %>
+ <select id="order_meal" name="order[meal]" class="form-control"> 
+ <option value='breakfast'>Breakfast</option>
+ <option value='lunch'>Lunch</option>
+ </select>
+  </div>
+  <div class="form-group">
+    <%= form.label :resturant, "From" %>
+    <%= form.text_field :resturant, class: 'form-control',placeholder: "Add a restaurant name" %>
+  </div>
+  <div class="form-group">
+    <%= form.label :users, "friends" %>
+     <select id="order_meal" name="order[meal]" class="form-control" multiple> 
+       <option value='breakfast'>Breakfast</option>
+      <option value='lunch'>Lunch</option>
+    </select>
+  </div>
+     <div class="form-group">
+    <%= form.label :image, "Menu image" %>
+    <%= form.file_field :image, class: 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= form.label :resturant %>
-    <%= form.text_field :resturant %>
-  </div>
-
-  <div class="field">
-    <%= form.label :status %>
-    <%= form.text_field :status %>
-  </div>
-
-  <div class="field">
-    <%= form.label :User_id %>
-    <%= form.text_field :User_id %>
-  </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit html: {class: "form-control"}, class:'btn btn-primary' %>
   </div>
 <% end %>
+</div>
+<div class="col-md-6"> 
+  <div class="block">
+
+  </div>
+</div>
+</div>

@@ -4,9 +4,10 @@
     <title>Website</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <%= stylesheet_link_tag 'orders'%>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag "order" %>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.0/css/all.css" integrity="sha384-Mmxa0mLqhmOeaE8vgOSbKacftZcsNYDjQzuCOm6D02luYSzBG8vpaOykv9lFQ51Y" crossorigin="anonymous">
     <script type="text/javascript">if (window.location.hash == '#_=_')window.location.hash ='';</script>
   </head>
@@ -37,12 +38,15 @@
       </nav>
 
       <!--Flash Messages -->
-
-      <% flash.each do |name, message| %>
+   <div class="container">
+     <% flash.each do |name, message| %>
         <%= content_tag(:div,message, class: "alert alert-info #{name}") %>
       <% end %>
       <!-- Page Content -->
       <%= yield %>
+     
+   </div>
+    
       
       <!-- Footer -->
       <footer class="small text-muted">

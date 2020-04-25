@@ -23,11 +23,12 @@ class OrdersController < ApplicationController
   def edit
   end
 
-  def chngstatus
-   ord= Order.find_by(id: 1)
+  #change the status of order
+  def chngstatus(_id)
+   ord= Order.find_by(id: _id)
    ord.update(status: 'finished')
-    # @order.update_attribute(:status, "finished")
   end
+  helper_method :chngstatus
 
   def update_my_model_status(model,id,field, value)
     @model_var = model.find(id)
@@ -37,8 +38,10 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.json
   def create
+    #print order_params;
     @order = Order.new(order_params)
-
+    @order.User = current_user if current_user
+    @order.status="waiting"
     respond_to do |format|
       if @order.save
         format.html { redirect_to @order, notice: 'Order was successfully created.' }
@@ -82,6 +85,6 @@ class OrdersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def order_params
-      params.require(:order).permit(:meal, :resturant, :status, :User_id)
+      params.require(:order).permit(:meal, :resturant, :status, :User_id,:image)
     end
 end

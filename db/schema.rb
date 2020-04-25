@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_24_070329) do
+ActiveRecord::Schema.define(version: 2020_04_25_135558) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -52,6 +52,16 @@ ActiveRecord::Schema.define(version: 2020_04_24_070329) do
     t.index ["User_id"], name: "index_groups_on_User_id"
   end
 
+  create_table "notifications", force: :cascade do |t|
+    t.integer "User_id"
+    t.integer "Friendship_id"
+    t.string "action"
+    t.integer "notifiable_id"
+    t.integer "notifiable_type"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "order_details", force: :cascade do |t|
     t.string "item"
     t.integer "amount"
@@ -90,6 +100,7 @@ ActiveRecord::Schema.define(version: 2020_04_24_070329) do
     t.integer "User_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "avatar"
     t.index ["User_id"], name: "index_orders_on_User_id"
   end
 

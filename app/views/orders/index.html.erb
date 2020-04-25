@@ -2,7 +2,6 @@
 
 
 <div class="mx-auto"><h1>Orders</h1></div>
-<link href="../../assets/stylesheets/application.scss" rel="stylesheet">
 <div >
 <%= link_to 'Start new Order', new_order_path, :class => "btn btn-primary justify-content-end" %>
 </div>
@@ -31,7 +30,7 @@
         <td>  <% if order.status == "waiting" %>
           <%= link_to 'View', order %>
           <%# <%= link_to 'Finish', edit_order_path(order) %> 
-          <%= link_to 'Finish', method: :chngstatus %>
+          <%= link_to 'Finish', method: chngstatus(order.id) %>
           <%= link_to 'Cancel', order, method: :delete, data: { confirm: 'Are you sure?' } %>
           <% elsif order.status == "finished" %>
                     <%= link_to 'View', order %>
