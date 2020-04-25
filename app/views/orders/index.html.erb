@@ -1,11 +1,14 @@
 <p id="notice"><%= notice %></p>
 
-<div >
-<div class="mx-auto"><h1>Orders</h1></div>
-<%= link_to 'Start new Order', new_order_path %>
-</div>
 
-<table class="table table-bordered table-info">
+<div class="mx-auto"><h1>Orders</h1></div>
+<link href="../../assets/stylesheets/application.scss" rel="stylesheet">
+<div >
+<%= link_to 'Start new Order', new_order_path, :class => "btn btn-primary justify-content-end" %>
+</div>
+<br>
+
+<table class="table table-bordered table-secondary">
   <thead>
     <tr>
       <th scope="col">Order</th>
@@ -26,7 +29,7 @@
         <td><%= order.resturant %></td>
         <td><%= order.status %></td>
         <td>  <% if order.status == "waiting" %>
-          <%= link_to 'Show', order %>
+          <%= link_to 'View', order %>
           <%# <%= link_to 'Finish', edit_order_path(order) %> 
           <%= link_to 'Finish', method: :chngstatus %>
           <%= link_to 'Cancel', order, method: :delete, data: { confirm: 'Are you sure?' } %>
@@ -38,8 +41,12 @@
         
       </tr>
     <% end %>
+
   </tbody>
+
 </table>
 
+
 <br>
+<%= will_paginate @orders,list_classes: %w(pagination justify-content-center) %>
 

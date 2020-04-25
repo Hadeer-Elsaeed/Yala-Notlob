@@ -9,6 +9,9 @@ gem 'bootstrap', '~> 4.3.1'
 gem "bootstrap_form", ">= 4.2.0"
 gem 'will_paginate', '~> 3.1', '>= 3.1.6'
 gem 'will_paginate-bootstrap', '~> 1.0', '>= 1.0.1'
+gem 'will_paginate-bootstrap4'
+
+
 gem 'bootstrap-social-rails'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
@@ -73,3 +76,4 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
+
