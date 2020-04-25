@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.5.1'
+ruby '2.6.6'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.0.rc1'
@@ -17,7 +17,6 @@ gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.2'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
-gem 'bootstrap-social-rails'
 # gem 'koala', '~> 3.0.0'
 gem 'devise_token_auth'
 gem 'activerecord-session_store'
@@ -71,3 +70,4 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
+#gem 'wdm', '>= 0.1.0'
