@@ -24,7 +24,14 @@ class OrdersController < ApplicationController
   end
 
   def chngstatus
+   ord= Order.find_by(id: 1)
+   ord.update(status: 'finished')
+    # @order.update_attribute(:status, "finished")
+  end
 
+  def update_my_model_status(model,id,field, value)
+    @model_var = model.find(id)
+    @model.update_attributes(field: value)
   end
 
   # POST /orders
