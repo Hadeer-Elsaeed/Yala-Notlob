@@ -23,11 +23,12 @@ class OrdersController < ApplicationController
   def edit
   end
 
-  def chngstatus
-   ord= Order.find_by(id: 1)
+  #change the status of order
+  def chngstatus(_id)
+   ord= Order.find_by(id: _id)
    ord.update(status: 'finished')
-    # @order.update_attribute(:status, "finished")
   end
+  helper_method :chngstatus
 
   def update_my_model_status(model,id,field, value)
     @model_var = model.find(id)
