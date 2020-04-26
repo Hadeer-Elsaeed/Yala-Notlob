@@ -1,3 +1,18 @@
 <p id="notice"><%= notice %></p>
 
-<h1>ًWelcome</h1>
+<h1>Welcome</h1>
+    <div class="row" style="width: 100%;">
+      <section  class="col-4" style="margin-left: 20px">
+        <div style="border:2px solid lightgray;border-radius:5px; padding:10px;" >
+            <h2 style="text-align:center;">Latest Orders</h2>
+            <!-- Latest Orders !!! -->
+            <% @latest_orders.each do |order| %>
+            <h6><%= order.meal %> on <%= order.created_at.to_date%> from <%= order.resturant%></h6>
+            <%end%>
+        </div>
+      </section>
+      <section  class="offset-1 col-6" style="border:2px solid lightgray;border-radius: 5px;">
+        <h2 style="text-align:center;">Friends activity</h2>
+        <!-- Friends activity -->
+      </section>
+    </div>
