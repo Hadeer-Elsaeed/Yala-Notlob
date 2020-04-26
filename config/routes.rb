@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :friendships
   resources :orders
   resources :groups
+  # get 'new', to: 'orders#new'
   devise_for :users, controllers: { 
     omniauth_callbacks: 'users/omniauth'
   }

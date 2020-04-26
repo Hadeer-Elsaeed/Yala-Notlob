@@ -17,15 +17,6 @@
   <%= f.submit "Log in", class: "btn btn-primary" %>
   <% end %>
   <center>
-<div class="form-group m-3">
-    <%= render "devise/shared/links" %>
-    <%= link_to user_facebook_omniauth_authorize_path, class: "btn btn-social btn-facebook" do %>
-      <span class="fab fa-facebook-f"></span> Sign in with facebook
-    <% end %>
-
-    <%= link_to user_google_oauth2_omniauth_authorize_path, class: "btn btn-social btn-google" do %>
-      <span class="fab fa-google"></span> Sign in with Google
-    <% end %>
-</div>
+  <%= render "devise/shared/links" %>
 </center>
 

@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  User_id: 1
+  Friendship_id: 1
+  action: MyString
+  notifiable_id: 1
+  notifiable_type: 1
+
+two:
+  User_id: 1
+  Friendship_id: 1
+  action: MyString
+  notifiable_id: 1
+  notifiable_type: 1
