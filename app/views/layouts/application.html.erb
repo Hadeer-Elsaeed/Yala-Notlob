@@ -25,7 +25,7 @@
             <ul class="navbar-nav ml-auto">
               <% if user_signed_in? %>
                 <li class="nav-item ml-auto"><%= link_to "Log out", signout_path, method: :delete, class: "nav-link btn btn-danger text-light" %></li>
-                <li class="nav-item ml-2">z
+                <li class="nav-item ml-2">
                 <%= image_tag("user.jpg", {:style => "width:50px;height:50px;border-radius:50%"}) %>
                 </li>      
                 <li class="nav-item ml-2 btn text-light "> Welcome: <strong class="text-success m-2"><%= current_user.name %></strong></li>
