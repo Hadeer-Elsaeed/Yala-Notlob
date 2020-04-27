@@ -344,7 +344,7 @@ DEPENDENCIES
   world-flags (~> 0.6.5)
 
 RUBY VERSION
-   ruby 2.6.6p146
+   ruby 2.5.1p57
 
 BUNDLED WITH
    2.1.4
