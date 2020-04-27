@@ -16,5 +16,7 @@ Rails.application.routes.draw do
    
   end
   root 'home#index'
+  post 'password/forgot', to: 'password#forgot'
+  post 'password/reset', to: 'password#reset'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

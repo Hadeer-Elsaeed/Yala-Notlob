@@ -1,11 +1,11 @@
 <p id="notice"><%= notice %></p>
-<button style="margin-left:20px; margin-bottom:20px"><%= link_to 'New Group', new_group_path %></button>
+<%= link_to 'New Group', new_group_path ,:class => "btn btn-primary m-3"%>
 <br/>
 
 <div class="row" style="width: 100%;">
       <section  class="col-4" style="margin-left: 20px">
         <div style="border:2px solid lightgray;border-radius:5px; padding:10px;" >
-            <h2 style="text-align:center;">Groups</h2>
+            <h2 class="text-center text-info">Groups</h2>
             <!-- Groups !!! -->
             <table class="table">
               <tbody style="padding:20px">
@@ -25,7 +25,7 @@
         </div>
       </section>
       <section  class="offset-1 col-6" style="border:2px solid lightgray;border-radius: 5px;">
-        <h2 style="text-align:center;">Friends activity</h2>
+        <h2 class="text-center text-info">Friends activity</h2>
         <!-- Friends activity -->
         <div style="display: inline-block; margin: 10px;">
             <%= image_tag("user.jpg", {:style => "width:80px;height:80px;border-radius:50%"}) %>

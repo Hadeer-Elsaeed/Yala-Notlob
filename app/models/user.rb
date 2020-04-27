@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   has_many :orders
   has_many :notifications
-  has_one_attached :avatar
+  has_one_attached :image
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatables,
          :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
