@@ -5,9 +5,19 @@ class OrdersController < ApplicationController
   # GET /orders.json
   def index
     @orders = Order.paginate(page: params[:page], per_page: 3)
-
-
   end
+
+  # def status
+  #   puts "eroooooooooooooooooooooo" 
+  #     respond_to do |format|
+  #       @ord= Order.find_by(id:1) 
+  #       if @ord.update(status:'finished')
+  #         format.html { redirect_to orders_url }
+  #         format.json { render :index, status: :ok, location: @ord }
+  #       end
+  #     end 
+  # end
+  #   helper_method :status
 
   # GET /orders/1
   # GET /orders/1.json
@@ -23,29 +33,18 @@ class OrdersController < ApplicationController
   def edit
   end
 
-  #change the status of order
-  def chngstatus(_id)
-   ord= Order.find_by(id: _id)
-   ord.update(status: 'finished')
-  end
-  helper_method :chngstatus
+  
 
-  def update_my_model_status(model,id,field, value)
-    @model_var = model.find(id)
-    @model.update_attributes(field: value)
-  end
 
   # POST /orders
   # POST /orders.json
   def create
-    #print order_params;
     @order = Order.new(order_params)
-    @order.User = current_user if current_user
-    @order.status="waiting"
+    @order.User_id = current_user.id 
     respond_to do |format|
       if @order.save
-        format.html { redirect_to @order, notice: 'Order was successfully created.' }
-        format.json { render :show, status: :created, location: @order }
+        format.html { redirect_to orders_url, notice: 'Order was successfully created.' }
+        format.json { render :show, status: :created, location: orders_url }
       else
         format.html { render :new }
         format.json { render json: @order.errors, status: :unprocessable_entity }
@@ -77,6 +76,8 @@ class OrdersController < ApplicationController
     end
   end
 
+
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_order
@@ -87,4 +88,15 @@ class OrdersController < ApplicationController
     def order_params
       params.require(:order).permit(:meal, :resturant, :status, :User_id,:image)
     end
+
+
+    def chngstatus (_id)
+      puts "eroooooooooooooooooooooo"      
+      ord= Order.find_by(id: _id)
+      ord.update(status: 'finished')
+      ord.errors.messages
+    end
+    helper_method :chngstatus
+  
+  
 end

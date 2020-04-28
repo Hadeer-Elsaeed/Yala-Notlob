@@ -29,8 +29,10 @@
         <td><%= order.status %></td>
         <td>  <% if order.status == "waiting" %>
           <%= link_to 'View', order %>
-          <%# <%= link_to 'Finish', edit_order_path(order) %> 
-          <%= link_to 'Finish', method: chngstatus(order.id) %>
+          <%# <%= link_to 'Finish', :action => 'status', :someadditionalparameter => 'id' %>
+
+       <%= link_to 'Finish', method: chngstatus(order.id) %>
+
           <%= link_to 'Cancel', order, method: :delete, data: { confirm: 'Are you sure?' } %>
           <% elsif order.status == "finished" %>
                     <%= link_to 'View', order %>
