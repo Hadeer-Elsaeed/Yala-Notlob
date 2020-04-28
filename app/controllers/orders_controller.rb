@@ -40,7 +40,22 @@ class OrdersController < ApplicationController
   # POST /orders.json
   def create
     @order = Order.new(order_params)
-    @order.User_id = current_user.id 
+    friends=params[:friends]
+    puts params[:friends]
+    puts friends
+    @order.User = current_user if current_user
+    @order.status="waiting"
+    @myusers=User.all
+
+    friends.each do |friend|
+      puts friend
+      @order_friend=OrderFriend.new
+      @order_friend.order=@order
+      @order_friend.user=@myusers.find_by(id:friend)
+      @order_friend.save
+      # Friendship.update_all({:status => 'invited'}, {:follower_id => friend, :followee_id => @order.User_id})  
+      Friendship.where(:follower_id => friend).where(:followee_id => @order.User_id).update_all("status = 'invited'")
+    end
     respond_to do |format|
       if @order.save
         format.html { redirect_to orders_url, notice: 'Order was successfully created.' }

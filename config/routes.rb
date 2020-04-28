@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   get 'home/index'
+  # get 'status'
+  get 'orders/status'
+
   resources :order_details
   resources :friendships
   resources :orders

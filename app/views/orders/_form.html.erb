@@ -35,11 +35,10 @@
 
 
   <div class="form-group">
-    <%= form.label :users, "friends" %>
-     <select id="order_meal" name="order[meal]" class="form-control" multiple> 
-       <option value='breakfast'>Breakfast</option>
-      <option value='lunch'>Lunch</option>
-    </select>
+    <%= form.label :myorderfriends, "friends" %>
+    <%= select_tag  :friends , options_for_select(current_user.followers.map { |s| [s.name, s.id] }), multiple: true ,class:'form-control'%>
+
+
   </div>
      <div class="form-group">
     <%= form.label :image, "Menu image" %>

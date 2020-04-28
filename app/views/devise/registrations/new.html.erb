@@ -20,10 +20,6 @@
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" ,class: "form-control", placeholder:"Confirm Password"%>
   </div>
-  <div class="form-group">
-  <%= f.label :image, "Menu image" %>
-  <%= f.file_field :image, class: 'form-control' %>
-</div>
   <div class="actions">
     <%= f.submit "Sign up", class: "btn btn-primary" %>
   </div>
