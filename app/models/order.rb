@@ -1,6 +1,6 @@
 class Order < ApplicationRecord
   myorderfriends=Array.new
-  belongs_to :User
+  belongs_to :user
   has_many:order_friend
   has_many:users, through: :order_friend
   has_many:order_groups

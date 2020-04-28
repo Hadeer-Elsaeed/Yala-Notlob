@@ -12,21 +12,29 @@
   <% end %>
     <div class="container">
     <div class="form-row">
-      <%# <h1>your friend email</h1> %>
        <div class="form-group col-md-6 mt-2">
-      <%# <div class="form-group row"> %>
        <%= form.label  :virtual_attribute , "Friend email" %>
        <%= form.email_field :virtual_attribute , class:'form-control',placeholder: "A user must exist and isn't a current friend"%>
        </div>
            <div class="form-group col-md-6 mt-4">
              <%= form.submit html: {class: "form-control"}, class:'btn btn-primary mt-3 '%>
-        </div>
+      </div>
+    
        
       
    
      </div>
   </div>
-    
+      <div class="row mt-2">
+        <div class="friends-list">
+        <div class="card">
+          <img src="" alt="friend img" >
+
+        </div>
+
+
+        </div>
+      </div>
 
     </div>
 

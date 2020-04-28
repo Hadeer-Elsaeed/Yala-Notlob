@@ -41,9 +41,7 @@ class OrdersController < ApplicationController
     #print order_params;
     @order = Order.new(order_params)
     friends=params[:friends]
-    puts params[:friends]
-    puts friends
-    @order.User = current_user if current_user
+    @order.user = current_user if current_user
     @order.status="waiting"
     @myusers=User.all
 
