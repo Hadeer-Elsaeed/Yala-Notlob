@@ -41,7 +41,7 @@ class OrdersController < ApplicationController
     #print order_params;
     @order = Order.new(order_params)
     friends=params[:friends]
-    @order.user = current_user if current_user
+    @order.User_id = current_user if current_user
     @order.status="waiting"
     @myusers=User.all
 
@@ -51,7 +51,6 @@ class OrdersController < ApplicationController
       @order_friend.order=@order
       @order_friend.user=@myusers.find_by(id:friend)
       @order_friend.save
-      # Friendship.update_all({:status => 'invited'}, {:follower_id => friend, :followee_id => @order.User_id})  
       Friendship.where(:follower_id => friend).where(:followee_id => @order.User_id).update_all("status = 'invited'")
     end
     respond_to do |format|

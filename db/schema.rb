@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_27_192308) do
+ActiveRecord::Schema.define(version: 2020_04_28_075432) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -139,4 +139,5 @@ ActiveRecord::Schema.define(version: 2020_04_27_192308) do
   add_foreign_key "order_groups", "groups"
   add_foreign_key "order_groups", "orders"
   add_foreign_key "orders", "Users"
+  add_foreign_key "orders", "users", column: "User_id"
 end
