@@ -1,13 +1,13 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Group:</strong>
-  <%= @friendship.Group_id %>
-</p>
 
 <p>
   <strong>User:</strong>
-  <%= @friendship.User_id %>
+  <%= current_user.name %>
+</p>
+<p>
+  <strong>Friend</strong>
+  <%= @friendship.follower.name %>
 </p>
 
 <%= link_to 'Edit', edit_friendship_path(@friendship) %> |

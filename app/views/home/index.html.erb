@@ -1,10 +1,10 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Welcome</h1>
+<h1 class="text-center login_h2 m-5">Welcome <%= current_user.name %></h1>
     <div class="row" style="width: 100%;">
       <section  class="col-4" style="margin-left: 20px">
         <div style="border:2px solid lightgray;border-radius:5px; padding:10px;" >
-            <h2 style="text-align:center;">Latest Orders</h2>
+            <h2 class="text-center text-info">Latest Orders</h2>
             <!-- Latest Orders !!! -->
             <% @latest_orders.each do |order| %>
             <h6><%= order.meal %> on <%= order.created_at.to_date%> from <%= order.resturant%></h6>
@@ -12,7 +12,21 @@
         </div>
       </section>
       <section  class="offset-1 col-6" style="border:2px solid lightgray;border-radius: 5px;">
-        <h2 style="text-align:center;">Friends activity</h2>
+        <h2 class="text-center text-info">Friends activity</h2>
         <!-- Friends activity -->
+        
+         <%if @friends != nil%>
+        <% @friends.each do |friend|%>
+        <h6><%= friend.name%> has created an order for <% @friends_order.each do |order|%>
+        <%= order.meal%> from <%= order.resturant%>
+        <%end%></h6>
+        
+        <%end%>
+        <%end %> 
+        <!--
+        <% @friends_order.each do |order|%>
+        <%= order.resturant%>
+        <%end%>
+        -->
       </section>
     </div>

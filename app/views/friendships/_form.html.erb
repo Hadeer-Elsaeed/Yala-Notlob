@@ -10,18 +10,24 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :Group_id %>
-    <%= form.text_field :Group_id %>
+    <div class="container">
+    <div class="form-row">
+      <%# <h1>your friend email</h1> %>
+       <div class="form-group col-md-6 mt-2">
+      <%# <div class="form-group row"> %>
+       <%= form.label  :virtual_attribute , "Friend email" %>
+       <%= form.email_field :virtual_attribute , class:'form-control',placeholder: "A user must exist and isn't a current friend"%>
+       </div>
+           <div class="form-group col-md-6 mt-4">
+             <%= form.submit html: {class: "form-control"}, class:'btn btn-primary mt-3 '%>
+        </div>
+   
+     </div>
   </div>
+    
 
-  <div class="field">
-    <%= form.label :User_id %>
-    <%= form.text_field :User_id %>
-  </div>
+    </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+
+
 <% end %>

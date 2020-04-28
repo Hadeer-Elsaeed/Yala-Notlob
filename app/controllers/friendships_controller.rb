@@ -1,6 +1,6 @@
 class FriendshipsController < ApplicationController
   before_action :set_friendship, only: [:show, :edit, :update, :destroy]
-
+# ActionController::Parameters.action_on_unpermitted_parameters =true
   # GET /friendships
   # GET /friendships.json
   def index
@@ -24,7 +24,15 @@ class FriendshipsController < ApplicationController
   # POST /friendships
   # POST /friendships.json
   def create
-    @friendship = Friendship.new(friendship_params)
+    @friendship = Friendship.new()
+    @user=User.find_by(email: friendship_params[:virtual_attribute])
+    notAfollower=current_user.followers.find_by(email: friendship_params[:virtual_attribute])
+      if @user != nil and  notAfollower== nil
+          @friendship.follower = @user;
+          @friendship.User_id=current_user.id
+          @friendship.followee=current_user if current_user
+      end
+
 
     respond_to do |format|
       if @friendship.save
@@ -69,6 +77,7 @@ class FriendshipsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def friendship_params
-      params.require(:friendship).permit(:Group_id, :User_id)
+      # :Group_id, :User_id
+      params.require(:friendship).permit(:virtual_attribute)
     end
 end

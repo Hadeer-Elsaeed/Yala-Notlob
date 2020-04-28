@@ -1,24 +1,22 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Friendships</h1>
+<h1 class="text-center login_h2 m-5">Friendships</h1>
 
-<table>
+<table class="table table-bordered">
   <thead>
     <tr>
-      <th>Group</th>
-      <th>User</th>
+      <th class="text-center text-info">User</th>
+      <th class="text-center text-info">Friend</th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
-    <% @friendships.each do |friendship| %>
+    <% current_user.followers.each do |friendship| %>
       <tr>
-        <td><%= friendship.Group_id %></td>
-        <td><%= friendship.User_id %></td>
-        <td><%= link_to 'Show', friendship %></td>
-        <td><%= link_to 'Edit', edit_friendship_path(friendship) %></td>
-        <td><%= link_to 'Destroy', friendship, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= current_user.name  %></td>
+        <td><%= friendship.name %></td>
+
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +24,4 @@
 
 <br>
 
-<%= link_to 'New Friendship', new_friendship_path %>
+<%= link_to 'New Friendship', new_friendship_path ,:class => "btn btn-primary m-1" %>

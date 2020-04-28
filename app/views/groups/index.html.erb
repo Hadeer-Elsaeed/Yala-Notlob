@@ -1,23 +1,20 @@
 <p id="notice"><%= notice %></p>
-<button style="margin-left:20px; margin-bottom:20px"><%= link_to 'New Group', new_group_path %></button>
+<%= link_to 'New Group', new_group_path ,:class => "btn btn-primary m-3"%>
 <br/>
 
 <div class="row" style="width: 100%;">
       <section  class="col-4" style="margin-left: 20px">
         <div style="border:2px solid lightgray;border-radius:5px; padding:10px;" >
-            <h2 style="text-align:center;">Groups</h2>
+            <h2 class="text-center text-info">Groups</h2>
             <!-- Groups !!! -->
             <table class="table">
               <tbody style="padding:20px">
               <% @groups.each do |group| %>
               <tr>
-              <th><%= group.name %></th>
-              <%# <td><%= group.User_id %></td>
+              <th><%= link_to group.name, group%></th>   
               <td><i class="fas fa-user-plus"></i></td>
-              <td><i class="fas fa-times"></i></td>
-        <%# <td><%= link_to 'Show', group %></td> 
         <%# <td><%= link_to 'Edit', edit_group_path(group) %></td> 
-        <%# <td><i class="fas fa-times"><%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' }%></i></td> 
+        <th><%= link_to '', group, method: :delete, data: { confirm: 'Are you sure?' },class: "fas fa-times text text-danger"%></th> 
       </tr>
     <% end %>
   </tbody>
@@ -25,9 +22,11 @@
         </div>
       </section>
       <section  class="offset-1 col-6" style="border:2px solid lightgray;border-radius: 5px;">
-        <h2 style="text-align:center;">Friends activity</h2>
-        <!-- Friends activity -->
+        
+        <h2 class="text-center text-info">group</h2>
+        <!-- Group Friends-->
         <div style="display: inline-block; margin: 10px;">
+           
             <%= image_tag("user.jpg", {:style => "width:80px;height:80px;border-radius:50%"}) %>
               <figcaption style="text-align:center;">friend1</figcaption>
               <figcaption style="text-align:center;">
@@ -35,4 +34,4 @@
               </figcaption>
         </div>
       </section>
-    </div>
+</div>
