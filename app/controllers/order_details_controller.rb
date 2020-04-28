@@ -4,12 +4,20 @@ class OrderDetailsController < ApplicationController
   # GET /order_details
   # GET /order_details.json
   def index
-    @order_details = OrderDetail.all
+    @order_detail = OrderDetail.all
+    
+    # @user = @order_detail[:user_id]
+    # @user_name = User.find(uid=@user)
   end
 
   # GET /order_details/1
   # GET /order_details/1.json
   def show
+    respond_to do |format|
+      format.html # show.html.erb
+      format.js # show.js.erb
+      format.json { render json: @order_detail }
+    end
   end
 
   # GET /order_details/new

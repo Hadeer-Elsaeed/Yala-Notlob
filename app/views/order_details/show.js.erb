@@ -1,0 +1,6 @@
+$modal = $('.modal'),
+$modalBody = $('.modal .modal-body'),
+$modalHeading = $('.modal .modal-heading');
+$modalHeading.html("<%= @order_detail %>");
+$modalBody.html("<%= j render 'modal' %>");
+$modal.modal(); 

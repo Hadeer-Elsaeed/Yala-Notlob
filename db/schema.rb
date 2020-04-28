@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 2020_04_25_135558) do
     t.integer "Friendship_id"
     t.string "action"
     t.integer "notifiable_id"
-    t.integer "notifiable_type"
+     t.integer "notifiable_type"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

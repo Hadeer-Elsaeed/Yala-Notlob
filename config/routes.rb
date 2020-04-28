@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   get 'home/index'
-  resources :order_details
+  
   resources :friendships
-  resources :orders
+  resources :orders do
+    resources :order_details
+  end
   resources :groups
   # get 'new', to: 'orders#new'
   devise_for :users, controllers: { 
