@@ -40,7 +40,7 @@ class OrdersController < ApplicationController
   def create
     #print order_params;
     @order = Order.new(order_params)
-    @order.User = current_user if current_user
+    @order.User_id = current_user.id if current_user
     @order.status="waiting"
     respond_to do |format|
       if @order.save

@@ -14,5 +14,19 @@
       <section  class="offset-1 col-6" style="border:2px solid lightgray;border-radius: 5px;">
         <h2 class="text-center text-info">Friends activity</h2>
         <!-- Friends activity -->
+        
+         <%if @friends != nil%>
+        <% @friends.each do |friend|%>
+        <h6><%= friend.name%> has created an order for <% @friends_order.each do |order|%>
+        <%= order.meal%> from <%= order.resturant%>
+        <%end%></h6>
+        
+        <%end%>
+        <%end %> 
+        <!--
+        <% @friends_order.each do |order|%>
+        <%= order.resturant%>
+        <%end%>
+        -->
       </section>
     </div>
