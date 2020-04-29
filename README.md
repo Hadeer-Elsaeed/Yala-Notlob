@@ -27,11 +27,14 @@ Things you may want to cover:
 
 <pre>
 - The user can Register using facebook or google account
+- The User can Upload Profile Image
 - The user can Login using facebook or google account
 - Users can't redirect to any page without login
+- User can see his name and profile image in navbar
 </pre>
 
 ### -Project Images
 ![](app/assets/images/login.jpg)
+![](app/assets/images/navbar.jpg)
 ![](app/assets/images/register.jpg)
 
