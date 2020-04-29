@@ -3,6 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   has_many :groups
   validates :groups, presence: false, allow_nil: true
+
   has_many :orders
   has_many :notifications
   has_one_attached :image

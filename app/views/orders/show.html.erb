@@ -1,32 +1,30 @@
-
 <p id="notice"><%= notice %></p>
 
-<h1 class="text-center login_h2 m-5">Order Details</h1>
+<p>
+  <strong>Meal:</strong>
+  <%= @order.meal %>
+</p>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th class="text-info">Meal</th>
-      <th class="text-info">Resturant</th>
-      <th class="text-info">Status</th>
-      <th class="text-info">User</th>
-      <th class="text-info">Image</th>
-    </tr>
-  </thead>
+<p>
+  <strong>Resturant:</strong>
+  <%= @order.resturant %>
+</p>
 
-  <tbody>
-      <tr>
-        <td><%= @order.meal %></td>
-        <td><%= @order.resturant %></td>
-        <td><%= @order.status %></td>
-        <td><%= @order.User_id %></td>
-        <td>   <% if @order.image.attached? %>
-            <img src="<%=(url_for(@order.image))  %>" width="100" height="100"/>
-          <% end %></td>
-  </tbody>
-</table>
+<p>
+  <strong>Status:</strong>
+  <%= @order.status %>
+</p>
 
-<br>
+<p>
+  <strong>User:</strong>
+  <%= @order.User_id %>
+</p>
+<p>
+  <strong>Image </strong>
+   <% if @order.image.attached? %>
+        <img src="<%=(url_for(@order.image))  %>" width="100" height="100"/>
+    <% end %>
+</p>
 
-<%= link_to 'Edit', edit_order_path(@order),:class => "btn btn-primary"  %> 
-<%= link_to 'Back', orders_path ,:class => "btn btn-info" %>
+<%= link_to 'Edit', edit_order_path(@order) %> |
+<%= link_to 'Back', orders_path %>
