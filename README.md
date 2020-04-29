@@ -31,6 +31,7 @@ Things you may want to cover:
 - The user can Login using facebook or google account
 - Users can't redirect to any page without login
 - User can see his name and profile image in navbar
+- User can edit his profile
 </pre>
 
 ### -Project Images

@@ -35,6 +35,10 @@
       <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
       <%= f.password_field :current_password, autocomplete: "current-password" %>
     </div>
+    <div class="upload-img">
+    <button class="img">Profile Image</button>
+    <%= f.file_field :image,class:"form-control",placeholder:"upload Image" %>
+  </div>
     <div class="actions">
       <%= f.submit "Update",class: "btn btn-primary" %>
     </div>
