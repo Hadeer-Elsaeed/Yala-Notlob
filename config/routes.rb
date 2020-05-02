@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   	get "signin" => 'devise/sessions#new'
   	delete "signout" => 'devise/sessions#destroy'
     get 'signup' => 'devise/registrations#new'
+    get 'edit' => 'devise/registrations#edit'
    
   end
   root 'home#index'

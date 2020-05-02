@@ -1,14 +1,23 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @group.name %>
-</p>
 
-<p>
-  <strong>User:</strong>
-  <%= @group.User_id %>
-</p>
+<h1 class="text-center login_h2 m-5">Groups Show</h1>
 
-<%= link_to 'Edit', edit_group_path(@group) %> |
-<%= link_to 'Back', groups_path %>
+<table class="table">
+  <thead>
+    <tr>
+      <th class="text-info">Name</th>
+      <th class="text-info">User</th>
+    </tr>
+  </thead>
+
+  <tbody>
+      <tr>
+        <td><%= @group.name %></td>
+        <td><%= @group.User_id %></td>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Edit', edit_group_path(@group),:class => "btn btn-primary"  %> 
+<%= link_to 'Back', groups_path ,:class => "btn btn-info" %>
