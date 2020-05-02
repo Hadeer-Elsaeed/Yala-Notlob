@@ -2,10 +2,18 @@ Rails.application.routes.draw do
   get 'home/index'
   # get 'status'
   get 'orders/status'
+  get '/modal/:id', to: 'modal#show'
 
   resources :friendships
+
   resources :orders do
-    resources :order_details
+    resources :order_details 
+    member do
+      get 'modal'
+    end
+      
+
+
   end
   resources :groups
   # get 'new', to: 'orders#new'

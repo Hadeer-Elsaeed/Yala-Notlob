@@ -7,18 +7,6 @@ class OrdersController < ApplicationController
     @orders = Order.paginate(page: params[:page], per_page: 3)
   end
 
-  # def status
-  #   puts "eroooooooooooooooooooooo" 
-  #     respond_to do |format|
-  #       @ord= Order.find_by(id:1) 
-  #       if @ord.update(status:'finished')
-  #         format.html { redirect_to orders_url }
-  #         format.json { render :index, status: :ok, location: @ord }
-  #       end
-  #     end 
-  # end
-  #   helper_method :status
-
   # GET /orders/1
   # GET /orders/1.json
   def show
@@ -33,10 +21,7 @@ class OrdersController < ApplicationController
   # GET /orders/1/edit
   def edit
   end
-
   
-
-
   # POST /orders
   # POST /orders.json
   def create
@@ -92,7 +77,19 @@ class OrdersController < ApplicationController
     end
   end
 
-
+  def modal 
+    puts "that is modal :))))))))))))))))))))))))))))))))"  
+    @invited_users =  Friendship.where(:User_id => 1)
+    @invited_users.each do |invited_users|
+      @inv_user_info = User.where(:id=>invited_users.followee_id)
+    end 
+    respond_to do |format|
+      format.html
+      format.js
+    end
+    puts"end:)))))))))))))))))))))))))))))))"
+  
+  end
   
   private
     # Use callbacks to share common setup or constraints between actions.
