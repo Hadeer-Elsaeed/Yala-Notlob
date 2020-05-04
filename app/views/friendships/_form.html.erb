@@ -1,4 +1,5 @@
 <%= form_with(model: friendship, local: true) do |form| %>
+<%if friendship != nil%>
   <% if friendship.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(friendship.errors.count, "error") %> prohibited this friendship from being saved:</h2>
@@ -10,12 +11,13 @@
       </ul>
     </div>
   <% end %>
+  <%end%>
     <div class="container">
     <div class="form-row">
       <%# <h1>your friend email</h1> %>
        <div class="form-group col-md-6 mt-2">
       <%# <div class="form-group row"> %>
-       <%= form.label  :virtual_attribute , "Friend email" %>
+       <%= form.label  :virtual_attribute , "Add Friend with email" %>
        <%= form.email_field :virtual_attribute , class:'form-control',placeholder: "A user must exist and isn't a current friend"%>
        </div>
            <div class="form-group col-md-6 mt-4">
@@ -24,10 +26,5 @@
    
      </div>
   </div>
-    
-
     </div>
-
-
-
 <% end %>

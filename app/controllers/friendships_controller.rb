@@ -19,6 +19,10 @@ class FriendshipsController < ApplicationController
 
   # GET /friendships/1/edit
   def edit
+    # @user=User.find_by(email: friendship_params[:virtual_attribute])
+    # if @user.group_id != nil
+    #   format.html { render :edit }
+    # end
   end
 
   # POST /friendships

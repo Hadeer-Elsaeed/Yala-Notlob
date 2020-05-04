@@ -9,6 +9,14 @@
   <strong>User:</strong>
   <%= @group.User_id %>
 </p>
+<p>
+  <strong>Friends in the group: </strong>
+  <% @frinds_group.each do |friend|%>
+  <%= @frind.User_id %>
+  <%= @frinds_group%>
+  <%end%>
+</p>
+
 
 <%= link_to 'Edit', edit_group_path(@group) %> |
 <%= link_to 'Back', groups_path %>
