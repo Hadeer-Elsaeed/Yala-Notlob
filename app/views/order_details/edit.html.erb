@@ -1,6 +1,7 @@
 <h1>Editing Order Detail</h1>
 
-<%= render 'form', order_detail: @order_detail %>
+<%= render 'form',order: @order,order_detail:@order_detail %>
+<%= @order.id%>
+<%= @order_detail.item%>
 
-<%= link_to 'Show', @order_detail %> |
-<%= link_to 'Back', order_details_path %>
+<%= link_to 'Back', order_order_detail_path %>

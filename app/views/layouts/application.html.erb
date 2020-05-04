@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.0/css/all.css" integrity="sha384-Mmxa0mLqhmOeaE8vgOSbKacftZcsNYDjQzuCOm6D02luYSzBG8vpaOykv9lFQ51Y" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/css/selectize.bootstrap2.css" integrity="sha256-YXM75UW48wdiR/wj4yNhs49ns3GIUsSYAspHRnhfEA4=" crossorigin="anonymous" />
     <script type="text/javascript">if (window.location.hash == '#_=_')window.location.hash ='';</script>
+    <%= favicon_link_tag asset_path('coffee.png'), :rel => 'icon', :type =>  'image/png' %>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/css/selectize.bootstrap2.min.css" integrity="sha256-7rW9HUDgE3t3AoAxno85UTVNfH0G6fWadUG0n/LWX1g=" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/css/selectize.bootstrap2.min.css.map" integrity="undefined" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/css/selectize.bootstrap3.min.css.map" integrity="undefined" crossorigin="anonymous" />
@@ -30,8 +31,13 @@
             <ul class="navbar-nav ml-auto">
               <% if user_signed_in? %>
                 <li class="nav-item ml-auto"><%= link_to "Log out", signout_path, method: :delete, class: "nav-link btn btn-danger text-light" %></li>
+                <li class="nav-item ml-auto"><%= link_to "Edit Profile", edit_path, class: "nav-link btn btn-info text-light mr-1 ml-1" %></li>
                 <li class="nav-item ml-2">
-                <%= image_tag("user.jpg", {:style => "width:50px;height:50px;border-radius:50%"}) %>
+                    <%if(current_user.image.present?)%>
+                      <%=image_tag(current_user.image, size:"50x50",class: "rounded-circle mr-1")%>
+                    <%else%>
+                      <%= image_tag("user.jpg", {:style => "width:50px;height:50px;border-radius:50%"}) %>
+                    <%end%>
                 </li>      
                 <li class="nav-item ml-2 btn text-light "> Welcome: <strong class="text-success m-2"><%= current_user.name %></strong></li>
               <% else %>
@@ -62,10 +68,11 @@
           </center>
         </div>
       </footer>
+     
       <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/selectize.js"></scricpt>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/selectize.min.js"></scricpt>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.js"></scricpt>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.min.js"></scricpt>
-   
+      
   </body>
 </html>

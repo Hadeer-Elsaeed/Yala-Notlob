@@ -2,10 +2,19 @@ Rails.application.routes.draw do
   get 'home/index'
   # get 'status'
   get 'orders/status'
+  get '/modal/:id', to: 'modal#show'
 
-  resources :order_details
   resources :friendships
-  resources :orders
+
+  resources :orders do
+    resources :order_details 
+    member do
+      get 'modal'
+    end
+      
+
+
+  end
   resources :groups
   # get 'new', to: 'orders#new'
   devise_for :users, controllers: { 
@@ -16,6 +25,7 @@ Rails.application.routes.draw do
   	get "signin" => 'devise/sessions#new'
   	delete "signout" => 'devise/sessions#destroy'
     get 'signup' => 'devise/registrations#new'
+    get 'edit' => 'devise/registrations#edit'
    
   end
   root 'home#index'

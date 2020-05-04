@@ -4,31 +4,52 @@ class OrderDetailsController < ApplicationController
   # GET /order_details
   # GET /order_details.json
   def index
-    @order_details = OrderDetail.all
+    @order = Order.find(params[:order_id])
+    @order_detail = @order.order_details.all
+    # @order_detail = OrderDetail.all
+    # @user = @order_detail[:user_id]
+    # @user_name = User.find(uid=@user)
   end
 
   # GET /order_details/1
   # GET /order_details/1.json
   def show
+    respond_to do |format|
+      format.html # show.html.erb
+      format.js # show.js.erb
+      format.json { render json: @order_detail }
+    end
   end
 
   # GET /order_details/new
   def new
-    @order_detail = OrderDetail.new
+    # creatte empty instance to use in form""model:"
+    # @order_detail = OrderDetail.new
+    @order =Order.find(params[:order_id])
+    puts "order new details controlller*****************************************************************************"
+    puts @order 
+    # it is empy!!!!!!why?! 
+
   end
 
-  # GET /order_details/1/edit
+  # GET /orders/:id/order_details/:id/edit
   def edit
   end
 
   # POST /order_details
   # POST /order_details.json
+  
   def create
-    @order_detail = OrderDetail.new(order_detail_params)
+    @order = Order.find(params[:order_id])
+    @order_detail = @order.order_details.create(order_detail_params)
+   
+# end
+#   def create
+#     @order_detail = OrderDetail.new(order_detail_params)
 
     respond_to do |format|
       if @order_detail.save
-        format.html { redirect_to @order_detail, notice: 'Order detail was successfully created.' }
+        format.html { redirect_to order_order_details_path, notice: 'Order detail was successfully created.' }
         format.json { render :show, status: :created, location: @order_detail }
       else
         format.html { render :new }
@@ -42,7 +63,7 @@ class OrderDetailsController < ApplicationController
   def update
     respond_to do |format|
       if @order_detail.update(order_detail_params)
-        format.html { redirect_to @order_detail, notice: 'Order detail was successfully updated.' }
+        format.html { redirect_to order_order_detail_path, notice: 'Order detail was successfully updated.' }
         format.json { render :show, status: :ok, location: @order_detail }
       else
         format.html { render :edit }
@@ -56,7 +77,7 @@ class OrderDetailsController < ApplicationController
   def destroy
     @order_detail.destroy
     respond_to do |format|
-      format.html { redirect_to order_details_url, notice: 'Order detail was successfully destroyed.' }
+      format.html { redirect_to order_order_details_path, notice: 'Order detail was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -64,10 +85,11 @@ class OrderDetailsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_order_detail
-      @order_detail = OrderDetail.find(params[:id])
+      @order = Order.find(params[:order_id])
+      @order_detail  = @order.order_details.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
+    # Only allow a list of trusted parameters through.**white listing**
     def order_detail_params
       params.require(:order_detail).permit(:item, :amount, :price, :comment, :user_id, :order_id)
     end
