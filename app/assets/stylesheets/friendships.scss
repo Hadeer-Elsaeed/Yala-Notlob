@@ -9,8 +9,14 @@
   flex-direction: row;
   flex-wrap: wrap;
 }
-.card {
+.mycard {
   width: 200px;
   height: 150px;
   border: 1px solid blue;
+  display: flex;
+  flex-direction: row;
+}
+.details{
+  display: flex;
+  flex-direction: column;
 }

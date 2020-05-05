@@ -27,10 +27,16 @@
   </div>
       <div class="row mt-2">
         <div class="friends-list">
-        <div class="card">
-          <img src="" alt="friend img" >
+          <% current_user.followers.each do |friend| %>
+            <div class="mycard mx-2">
+            <img src="" alt="friend img" >
+            <div class="details ml-2">
+            <p>><%= friend.name %></p>
+            <p>unfriend</p>
+            </div>
 
         </div>
+         <% end %>
 
 
         </div>

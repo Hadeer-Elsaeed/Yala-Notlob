@@ -4,7 +4,12 @@ class GroupsController < ApplicationController
   # GET /groups
   # GET /groups.json
   def index
-    @groups = Group.all
+    @groups = Group.where("User_id=?",current_user.id)
+    @first_group = Group.first()
+    if @first_group
+      @frinds_group = Friendship.where("group_id=?",@first_group.id)
+    end
+
   end
 
   # GET /groups/1
@@ -25,6 +30,7 @@ class GroupsController < ApplicationController
   # POST /groups.json
   def create
     @group = Group.new(group_params)
+    @group.User_id = current_user.id
 
     respond_to do |format|
       if @group.save
@@ -69,6 +75,6 @@ class GroupsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def group_params
-      params.require(:group).permit(:name, :User_id)
+      params.require(:group).permit(:name, User_id: current_user.id)
     end
 end
