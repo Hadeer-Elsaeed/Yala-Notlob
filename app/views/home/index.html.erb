@@ -1,4 +1,3 @@
-<p id="notice"><%= notice %></p>
 
 <h1 class="text-center login_h2 m-5">Welcome <%= current_user.name %></h1>
     <div class="row" style="width: 100%;">
@@ -17,16 +16,14 @@
         
          <%if @friends != nil%>
         <% @friends.each do |friend|%>
-        <h6><%= friend.name%> has created an order for <% @friends_order.each do |order|%>
+        <h6><%= friend.name%> has created an order for
+        <% @friends_order.each do |order|%>
         <%= order.meal%> from <%= order.resturant%>
-        <%end%></h6>
+        <%end %>
+        </h6>
         
         <%end%>
-        <%end %> 
-        <!--
-        <% @friends_order.each do |order|%>
-        <%= order.resturant%>
-        <%end%>
-        -->
+        <%end %>
+        
       </section>
     </div>

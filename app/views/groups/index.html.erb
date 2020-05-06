@@ -1,4 +1,3 @@
-<p id="notice"><%= notice %></p>
 <%= link_to 'New Group', new_group_path ,:class => "btn btn-primary m-3"%>
 <br/>
 
@@ -22,16 +21,20 @@
         </div>
       </section>
       <section  class="offset-1 col-6" style="border:2px solid lightgray;border-radius: 5px;">
-        
+        <div>
         <h2 class="text-center text-info">group</h2>
+        <div>
+          <%= render 'friendships/form', friendship: @friendship %>
+          </div>
+          
         <!-- Group Friends-->
         <div style="display: inline-block; margin: 10px;">
-           
             <%= image_tag("user.jpg", {:style => "width:80px;height:80px;border-radius:50%"}) %>
               <figcaption style="text-align:center;">friend1</figcaption>
               <figcaption style="text-align:center;">
                 <%# <%= link_to 'remove', latest_orders, method: :delete, data: { confirm: 'Are you sure?' }  %>
               </figcaption>
+        </div>
         </div>
       </section>
 </div>

@@ -1,14 +1,19 @@
-<p id="notice"><%= notice %></p>
 
+<h1 class="text-center login_h2 m-5">Friends Show</h1>
 
-<p>
-  <strong>User:</strong>
-  <%= current_user.name %>
-</p>
-<p>
-  <strong>Friend</strong>
-  <%= @friendship.follower.name %>
-</p>
+<table class="table">
+  <thead>
+    <tr>
+      <th class="text-info">User</th>
+      <th class="text-info">Friend</th>
+    </tr>
+  </thead>
 
-<%= link_to 'Edit', edit_friendship_path(@friendship) %> |
-<%= link_to 'Back', friendships_path %>
+  <tbody>
+      <tr>
+        <td><%= current_user.name%></td>
+        <td><%= @friendship.follower.name %></td>
+  </tbody>
+</table>
+<%= link_to 'Edit', edit_friendship_path(@friendship),:class => "btn btn-primary"  %> 
+<%= link_to 'Back', friendships_path ,:class => "btn btn-info" %>

@@ -12,9 +12,22 @@ class GroupsController < ApplicationController
 
   end
 
+  # def add_friend_group
+  #   @friendship = Friendship.new()
+  #   @user=User.find_by(email: friendship_params[:virtual_attribute])
+  #   notAfollower=current_user.followers.find_by(email: friendship_params[:virtual_attribute])
+  #     if @user != nil and  notAfollower== nil
+  #         @friendship.follower = @user;
+  #         @friendship.User_id=current_user.id
+  #         @friendship.followee=current_user if current_user
+  #     end
+  # end
+  # helper_method :add_friend_group
+
   # GET /groups/1
   # GET /groups/1.json
   def show
+    @frinds_group = Friendship.where("group_id=?",params[:id])
   end
 
   # GET /groups/new

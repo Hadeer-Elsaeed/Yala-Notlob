@@ -1,14 +1,38 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @group.name %>
-</p>
 
+<<<<<<< HEAD
 <p>
   <strong>User:</strong>
   <%= @group.User_id %>
 </p>
+<p>
+  <strong>Friends in the group: </strong>
+  <% @frinds_group.each do |friend|%>
+  <%= @frind.User_id %>
+  <%= @frinds_group%>
+  <%end%>
+</p>
 
-<%= link_to 'Edit', edit_group_path(@group) %> |
-<%= link_to 'Back', groups_path %>
+=======
+<h1 class="text-center login_h2 m-5">Groups Show</h1>
+>>>>>>> 8e7253f036013fe89cb21e5ca09cd58428bf7d38
+
+<table class="table">
+  <thead>
+    <tr>
+      <th class="text-info">Name</th>
+      <th class="text-info">User</th>
+    </tr>
+  </thead>
+
+  <tbody>
+      <tr>
+        <td><%= @group.name %></td>
+        <td><%= @group.User_id %></td>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Edit', edit_group_path(@group),:class => "btn btn-primary"  %> 
+<%= link_to 'Back', groups_path ,:class => "btn btn-info" %>
