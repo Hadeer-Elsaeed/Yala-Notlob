@@ -14,17 +14,37 @@
   <%end%>
     <div class="container">
     <div class="form-row">
-      <%# <h1>your friend email</h1> %>
        <div class="form-group col-md-6 mt-2">
-      <%# <div class="form-group row"> %>
-       <%= form.label  :virtual_attribute , "Add Friend with email" %>
+       <%= form.label  :virtual_attribute , "Friend email" %>
        <%= form.email_field :virtual_attribute , class:'form-control',placeholder: "A user must exist and isn't a current friend"%>
        </div>
            <div class="form-group col-md-6 mt-4">
              <%= form.submit html: {class: "form-control"}, class:'btn btn-primary mt-3 '%>
-        </div>
+      </div>
+    
+       
+      
    
      </div>
   </div>
+      <div class="row mt-2">
+        <div class="friends-list">
+          <% current_user.followers.each do |friend| %>
+            <div class="mycard mx-2">
+               <% if friend.image.attached? %>
+                <img src="<%=(url_for(friend.image))  %>" width="100" height="100"/>
+                <% end %>
+            <div class="details ml-2">
+            <p><%= friend.name %></p>
+            <p>unfriend</p>
+            </div>
+
+        </div>
+         <% end %>
+
+
+        </div>
+      </div>
+
     </div>
 <% end %>

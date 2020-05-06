@@ -34,7 +34,7 @@ class FriendshipsController < ApplicationController
     @friendship = Friendship.new()
     @user=User.find_by(email: friendship_params[:virtual_attribute])
     notAfollower=current_user.followers.find_by(email: friendship_params[:virtual_attribute])
-      if @user != nil and  notAfollower== nil
+      if @user != nil and  notAfollower== nil and @user !=current_user
           @friendship.follower = @user;
           @friendship.User_id=current_user.id
           @friendship.followee=current_user if current_user
