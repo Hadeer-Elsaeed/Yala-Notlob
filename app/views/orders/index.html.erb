@@ -1,10 +1,8 @@
 <p id="notice"><%= notice %></p>
 
 
-<div class="mx-auto"><h1>Orders</h1></div>
-<div >
-<%= link_to 'Start new Order', new_order_path, :class => "btn btn-primary justify-content-end" %>
-</div>
+<div class="mx-auto text-center login_h2 m-5"><h1>Orders</h1></div>
+
 <br>
 
 <table class="table table-bordered table-secondary">
@@ -22,6 +20,7 @@
 
   <tbody>
     <% @orders.each do |order| %>
+
       <tr>
         <td><%= order.meal %></td>
          <td><%= order.resturant %></td>
@@ -30,18 +29,18 @@
         <% end %>
         
         </td>
+        <td><%= 2 %></td>
         <td><%= 3 %></td>
-        <td><%=2 %></td>
         <td><%= order.status %></td>
         <td>  <% if order.status == "waiting" %>
-          <%= link_to 'View', order %>
+          <%= link_to 'View', order_order_details_path(order.id) %>
           <%# <%= link_to 'Finish', :action => 'status', :someadditionalparameter => 'id' %>
 
        <%= link_to 'Finish', method: chngstatus(order.id) %>
 
           <%= link_to 'Cancel', order, method: :delete, data: { confirm: 'Are you sure?' } %>
           <% elsif order.status == "finished" %>
-                    <%= link_to 'View', order%>
+                    <%= link_to 'View', order_order_details_path(order.id)%>
                     <% end %>
 
         </td>
@@ -55,5 +54,8 @@
 
 
 <br>
+<div >
+<%= link_to 'Start new Order', new_order_path, :class => "btn btn-primary justify-content-end" %>
+</div>
 <%= will_paginate @orders,list_classes: %w(pagination justify-content-center) %>
 

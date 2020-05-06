@@ -1,4 +1,4 @@
-<%= form_with(model: friendship, local: true) do |form| %>
+<%= form_with(model: friendship,local:true) do |form| %>
 <%if friendship != nil%>
   <% if friendship.errors.any? %>
     <div id="error_explanation">
@@ -14,17 +14,41 @@
   <%end%>
     <div class="container">
     <div class="form-row">
-      <%# <h1>your friend email</h1> %>
        <div class="form-group col-md-6 mt-2">
-      <%# <div class="form-group row"> %>
-       <%= form.label  :virtual_attribute , "Add Friend with email" %>
+       <%= form.label  :virtual_attribute , "Friend email" %>
        <%= form.email_field :virtual_attribute , class:'form-control',placeholder: "A user must exist and isn't a current friend"%>
        </div>
            <div class="form-group col-md-6 mt-4">
              <%= form.submit html: {class: "form-control"}, class:'btn btn-primary mt-3 '%>
-        </div>
+      </div>
+    
+       
+      
    
      </div>
+   
   </div>
-    </div>
-<% end %>
+    <% end %>
+      <div class="row mt-2">
+        <div class="friends-list">
+          <% @friendships.each do |friend| %>
+            <% if friend.followee_id == current_user.id%>
+            <div class="mycard mx-2 mt-2">
+             <% if friend.follower.image.attached? %>
+                <img src="<%=(url_for(friend.follower.image))  %>" width="100" height="100"/>
+                <% end %>
+            <div class="details ml-2">
+            <p><%= friend.follower.name %></p>
+            <%= button_to "unfriend", {:controller => :friendships,
+      :action => 'destroy', :id => friend.id  },class: "form-control btn-danger", :method => :delete,remote: true %>
+            </div>
+        </div>
+        <% end %>
+         <% end %>
+
+
+        </div>
+      </div>
+
+    
+

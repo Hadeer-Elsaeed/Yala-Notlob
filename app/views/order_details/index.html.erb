@@ -1,18 +1,18 @@
 <% @order_details_state = @ord.blank? %>
-<% if @order_details_state == true %>
+<% if @order_details_state = true%>
   <p id="notice"><%= notice %></p>
 
-  <h1>Order Details</h1>
+  <h1 class="text-center login_h2 m-5" >Order Details</h1>
   <style>
   table, th, td {
     border: 1px solid black;
   }
   </style>
 
-  <table style=" border: 1px solid black;">
+  <table style=" border: 1px solid black;" class="table table-bordered table-secondary">
     <thead>
       <tr style="border: 1px solid black;"> 
-        <th>User</th>
+        <th>Person</th>
         <th>Item</th>
         <th>Amount</th>
         <th>Price</th>
@@ -25,8 +25,6 @@
 
       <% @ord = @order_detail.first.order_id %>
       <% @invited = OrderFriend.where(:order_id => @ord).count %> 
-      
-      
       <% if false %>
         <% @group = OrderGroup.find(order_id=@ord) %>
         <% @result = @group.blank?%> 
@@ -35,8 +33,6 @@
         <% Group.where(:id=>1) %>
       <% end %>
       <% end %>
-
-
       <% @user = Order.find(id = @ord).User_id %>      
       <% @joined = Friendship.where(:User_id => @user , :status => "joined").count %>
           <p><%= link_to (@joined).to_s+'friends joined,click here to view',joined_modal_order_path(@ord) , {:style=>'margin-top:50px;margin-right:10px;',method: "post" ,:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window'}  %></p>
@@ -110,7 +106,7 @@
     -->
     <% end %>
     <br>
-    <%= link_to 'New Order Detail', new_order_order_detail_path %>
+    <%= link_to 'New Order Detail', new_order_order_detail_path, :class => "btn btn-primary justify-content-end" %>
 <%else %>
-<h3 style="text-align:center; margin:200px auto;color :red;">THERE IS NO ORDER DETAILS YET :) </h3>
+<h3 style="text-align:center;margin:200px auto;color :red;">THERE IS NO ORDER DETAILS YET :) </h3>
 <% end %>
