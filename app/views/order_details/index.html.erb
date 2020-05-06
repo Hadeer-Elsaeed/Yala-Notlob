@@ -1,83 +1,116 @@
-<p id="notice"><%= notice %></p>
+<% @order_details_state = @ord.blank? %>
+<% if @order_details_state == true %>
+  <p id="notice"><%= notice %></p>
 
-<h1>Order Details</h1>
-<style>
-table, th, td {
-  border: 1px solid black;
-}
-</style>
+  <h1>Order Details</h1>
+  <style>
+  table, th, td {
+    border: 1px solid black;
+  }
+  </style>
 
-<table style=" border: 1px solid black;">
-  <thead>
-    <tr style="border: 1px solid black;"> 
-      <th>User</th>
-      <th>Item</th>
-      <th>Amount</th>
-      <th>Price</th>
-      <th>Comment</th>
-      <th>Order</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @ord = @order_detail.first.order_id %>
-    
-    <% @invited = OrderFriend.where(:order_id => @ord).count %>  
-    <% @user = Order.find(id = @ord).User_id %>  
-    <p><%= @user %></p>
-    <% @joined = Friendship.where(:User_id => @user , :status => "joined").count %>
-        <p><%= @joined %><%= link_to 'friends joined,click here to view'%></p>
-    <% @invited = Friendship.where(:User_id => @user).count %>
-    
-    <%@joined_users =  Friendship.where(:User_id => @user , :status => "joined") %>
+  <table style=" border: 1px solid black;">
+    <thead>
+      <tr style="border: 1px solid black;"> 
+        <th>User</th>
+        <th>Item</th>
+        <th>Amount</th>
+        <th>Price</th>
+        <th>Comment</th>
+        <th>Order</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+    <tbody>
 
-    
-    <p ><%= @invited %><%= link_to 'friends invited,click here to view', modal_order_path(@ord), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'btn btn-primary btn-lg'}%></p>
-    <div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content"></div>
-      </div>
-    </div>
-    <% if false %>   
-         <% @arr =OrderFriend.where(:order_id=>@ord ) %>
-        <% jarray=[] %>
-        <% @arr.each do|arr| %>
-          <% @j = Friendship.where(:user_id=>@user,:followee_id=>@arr,:status=>"joined")%>
-          ##@user
-            
-          <% jarray.push(@j) %>
-          <p><%= jarray %></p>
-            
-        <% end %>  
-        <p>jjjjjjjjjjjj<%= jarray.count %></p> 
-    <% end %>
-
-    <% @order_detail.each do |order_detail| %>
-     <% @user = order_detail.user_id %>
-      <% @user_name = User.find(uid=@user) %>
-      <tr style="border: 1px solid black;">
-      # <!-- do not forgrt to use session to put user_id --> 
-        <td><%= @user_name.name %></td>
-        <td><%= order_detail.item %></td>
-        <td><%= order_detail.amount %></td>
-        <td><%= order_detail.price %></td>
-        <td><%= order_detail.comment %></td>
-        <td><%= order_detail.order_id %></td>
-        <td><%= link_to 'Show', order_order_detail_path(order_detail.order_id,order_detail) %></td>
-        <% if false %>
-        # <td><%= link_to 'Edit', edit_order_order_detail_path(order_detail.order_id,order_detail) %></td>
-       <% end %>
-        <td><%= link_to 'Destroy', order_order_detail_path(order_detail.order_id,order_detail), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-
-</tr>
+      <% @ord = @order_detail.first.order_id %>
+      <% @invited = OrderFriend.where(:order_id => @ord).count %> 
+      
+      
+      <% if false %>
+        <% @group = OrderGroup.find(order_id=@ord) %>
+        <% @result = @group.blank?%> 
+        <% puts @result%>
+        <% if @result == false %>
+        <% Group.where(:id=>1) %>
       <% end %>
-  </tbody>
-</table>
-<% if false %> 
-<!-- # On this page you should also render your modal/dialog box,
-#  but it should have a class on it that keeps it hidden 
-#  (you'll later toggle this with JS/jQuery). 
--->
+      <% end %>
+
+
+      <% @user = Order.find(id = @ord).User_id %>      
+      <% @joined = Friendship.where(:User_id => @user , :status => "joined").count %>
+          <p><%= link_to (@joined).to_s+'friends joined,click here to view',joined_modal_order_path(@ord) , {:style=>'margin-top:50px;margin-right:10px;',method: "post" ,:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window'}  %></p>
+      <% @invited = Friendship.where(:User_id => @user).count %> 
+      <%= link_to (@invited).to_s+' friends invited click to view',invited_modal_order_path(@ord) %>
+  
+      # <%= link_to (@invited).to_s+' friends invited click to view',invited_modal_order_path(@ord),  {:style=>'margin-top:50px;margin-right:10px;',method: "post" ,:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window'}  %>
+    
+      <div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content"></div>
+          </div>
+        </div>
+        <div id="#modal2-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content"></div>
+          </div>
+        </div>
+    
+        
+  <% if false %>      
+
+      <div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+          kkkkkkkkkkkkkkk
+          </div>
+        </div>
+      </div>
+      
+          <% @arr =OrderFriend.where(:order_id=>@ord ) %>
+          <% jarray=[] %>
+          <% @arr.each do|arr| %>
+            <% @j = Friendship.where(:user_id=>@user,:followee_id=>@arr,:status=>"joined")%>
+            ##@user
+              
+            <% jarray.push(@j) %>
+            <p><%= jarray %></p>
+              
+          <% end %>  
+          <p>jjjjjjjjjjjj<%= jarray.count %></p> 
+    <% end %>
+            <br/>
+            <br/>
+      <% @order_detail.each do |order_detail| %>
+      <% @user = order_detail.user_id %>
+        <% @user_name = User.find(uid=@user) %>
+        <tr style="border: 1px solid black;">
+        # <!-- do not forgrt to use session to put user_id -->
+        <% puts current_user %> 
+          <td><%= @user_name.name %></td>
+          <td><%= order_detail.item %></td>
+          <td><%= order_detail.amount %></td>
+          <td><%= order_detail.price %></td>
+          <td><%= order_detail.comment %></td>
+          <td><%= order_detail.order_id %></td>
+          <td><%= link_to 'Show', order_order_detail_path(order_detail.order_id,order_detail) %></td>
+          <% if false %>
+          # <td><%= link_to 'Edit', edit_order_order_detail_path(order_detail.order_id,order_detail) %></td>
+        <% end %>
+          <td><%= link_to 'Destroy', order_order_detail_path(order_detail.order_id,order_detail), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+    </tr>
+          <% end %>
+      </tbody>
+    </table>
+    <% if false %> 
+    <!-- # On this page you should also render your modal/dialog box,
+    #  but it should have a class on it that keeps it hidden 
+    #  (you'll later toggle this with JS/jQuery). 
+    -->
+    <% end %>
+    <br>
+    <%= link_to 'New Order Detail', new_order_order_detail_path %>
+<%else %>
+<h3 style="text-align:center; margin:200px auto;color :red;">THERE IS NO ORDER DETAILS YET :) </h3>
 <% end %>
-<br>
-<%= link_to 'New Order Detail', new_order_order_detail_path %>

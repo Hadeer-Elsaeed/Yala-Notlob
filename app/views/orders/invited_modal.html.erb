@@ -1,0 +1,9 @@
+# <%= render 'invited_modal', inv_user_info: @inv_user_info %>
+<% @invited_users.each do |invited_users|%>
+<% @followers = @invited_users.follower_id %>
+<% @inv_user_info = User.where(:id=>@followers) %>
+<% @inv_user_info.each do |inv|%>
+<h4 style="color:blue;"><%= inv.name %><h4>
+<br/>
+<% end %>
+<% end %>

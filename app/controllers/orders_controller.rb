@@ -77,20 +77,31 @@ class OrdersController < ApplicationController
     end
   end
 
-  def modal 
+  def invited_modal 
     puts "that is modal :))))))))))))))))))))))))))))))))"  
-    @invited_users =  Friendship.where(:User_id => 1)
-    @invited_users.each do |invited_users|
-      @inv_user_info = User.where(:id=>invited_users.followee_id)
-    end 
-    respond_to do |format|
-      format.html
+    # @inv_user_info = []
+    @owner_id = Order.find(params[:id]).User_id 
+    @invited_users =  Friendship.where(:User_id => @owner_id)
+      respond_to do |format|
+      format.html 
       format.js
     end
     puts"end:)))))))))))))))))))))))))))))))"
-  
   end
-  
+  def joined_modal
+    @user = Order.find(params[:id]).User_id    
+    @joined_users =  Friendship.where(:User_id => @user , :status => "joined")  
+    @joined_users.each do |joined_users| 
+       puts joined_users.followee_id
+       @joined_users_info =User.find_by(id:joined_users.followee_id)
+     end 
+     puts @joined_users_info
+    
+    respond_to do |format|
+      format.html 
+      format.js
+    end
+  end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_order
