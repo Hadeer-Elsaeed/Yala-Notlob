@@ -9,11 +9,9 @@ Rails.application.routes.draw do
   resources :orders do
     resources :order_details 
     member do
-      get 'modal'
+      get 'invited_modal' 
+      get 'joined_modal' 
     end
-      
-
-
   end
   resources :groups
   # get 'new', to: 'orders#new'
