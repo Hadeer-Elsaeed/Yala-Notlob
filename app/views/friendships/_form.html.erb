@@ -1,4 +1,4 @@
-<%= form_with(model: friendship, local: true) do |form| %>
+<%= form_with(model: friendship,local:true) do |form| %>
 <%if friendship != nil%>
   <% if friendship.errors.any? %>
     <div id="error_explanation">
@@ -26,25 +26,29 @@
       
    
      </div>
+   
   </div>
+    <% end %>
       <div class="row mt-2">
         <div class="friends-list">
-          <% current_user.followers.each do |friend| %>
-            <div class="mycard mx-2">
-               <% if friend.image.attached? %>
-                <img src="<%=(url_for(friend.image))  %>" width="100" height="100"/>
+          <% @friendships.each do |friend| %>
+            <% if friend.followee_id == current_user.id%>
+            <div class="mycard mx-2 mt-2">
+             <% if friend.follower.image.attached? %>
+                <img src="<%=(url_for(friend.follower.image))  %>" width="100" height="100"/>
                 <% end %>
             <div class="details ml-2">
-            <p><%= friend.name %></p>
-            <p>unfriend</p>
+            <p><%= friend.follower.name %></p>
+            <%= button_to "unfriend", {:controller => :friendships,
+      :action => 'destroy', :id => friend.id  },class: "form-control btn-danger", :method => :delete,remote: true %>
             </div>
-
         </div>
+        <% end %>
          <% end %>
 
 
         </div>
       </div>
 
-    </div>
-<% end %>
+    
+
