@@ -1,30 +1,31 @@
-<%= link_to 'New Group', new_group_path ,:class => "btn btn-primary m-3"%>
 <br/>
+<!--Add New Group -->
+<%= render 'form' , group: @new_group%>
 
+<br/>
 <div class="row" style="width: 100%;">
       <section  class="col-4" style="margin-left: 20px">
         <div style="border:2px solid lightgray;border-radius:5px; padding:10px;" >
-            <h2 class="text-center text-info">Groups</h2>
-            <!-- Groups !!! -->
+            <h2 class="text-center text-info">My Groups</h2>
+            <!-- List All Groups !!! -->
             <table class="table">
               <tbody style="padding:20px">
-              <% @groups.each do |group| %>
-              <tr>
-              <th><%= link_to group.name, group%></th>   
-              <td><i class="fas fa-user-plus"></i></td>
-        <%# <td><%= link_to 'Edit', edit_group_path(group) %></td> 
-        <th><%= link_to '', group, method: :delete, data: { confirm: 'Are you sure?' },class: "fas fa-times text text-danger"%></th> 
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+              <tr><%=render @groups%></tr>
+              </tbody>
+            </table>
         </div>
       </section>
       <section  class="offset-1 col-6" style="border:2px solid lightgray;border-radius: 5px;">
         <div>
-        <h2 class="text-center text-info">group</h2>
-        <div>
-          <%= render 'friendships/form', friendship: @friendship %>
+          <h2 class="text-center text-info">group</h2>
+          <!-- Add friend to group -->
+        <div style="text-align:center;">
+        <%= form_with(model: @new_friend) do |f| %>
+          <%= f.email_field :email , class:'form-control',placeholder: "Add friend by email to the group"%>
+          <br/>
+          <%= f.submit "Add friend", class: "btn btn-primary"%>
+        <% end %>
+         <!-- <%= render 'friendships/form', friendship: @friendship %> -->
           </div>
           
         <!-- Group Friends-->

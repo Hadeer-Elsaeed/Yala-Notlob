@@ -5,7 +5,7 @@ class User < ApplicationRecord
   has_many :groups
   validates :groups, presence: false, allow_nil: true
 
-  has_many :orders 
+  has_many :orders , dependent: :destroy 
   has_many :notifications
   has_one_attached :image
   devise :database_authenticatable, :registerable,
@@ -19,7 +19,7 @@ has_many :following_users, foreign_key: :followee_id, class_name: 'Friendship'
 has_many :followers, through: :following_users
 
 has_many:order_friend 
-has_many:orders, through: :order_friend 
+has_many:orders, through: :order_friend ,  dependent: :destroy 
 
 has_many:order_details
   before_save { self.email = email.downcase }

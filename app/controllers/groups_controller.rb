@@ -5,10 +5,14 @@ class GroupsController < ApplicationController
   # GET /groups.json
   def index
     @groups = Group.where("User_id=?",current_user.id)
+    @new_group = Group.new
+    @new_friend = Friendship.new
+    
     @first_group = Group.first()
     if @first_group
       @frinds_group = Friendship.where("group_id=?",@first_group.id)
     end
+    
 
   end
 
@@ -47,7 +51,7 @@ class GroupsController < ApplicationController
 
     respond_to do |format|
       if @group.save
-        format.html { redirect_to @group, notice: 'Group was successfully created.' }
+        format.html { redirect_to groups_path, notice: 'Group was successfully created.' }
         format.json { render :show, status: :created, location: @group }
       else
         format.html { render :new }

@@ -52,16 +52,6 @@ ActiveRecord::Schema.define(version: 2020_05_05_221141) do
     t.index ["User_id"], name: "index_groups_on_User_id"
   end
 
-  create_table "notifications", force: :cascade do |t|
-    t.integer "User_id"
-    t.integer "Friendship_id"
-    t.string "action"
-    t.integer "notifiable_id"
-    t.integer "notifiable_type"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "order_details", force: :cascade do |t|
     t.string "item"
     t.integer "amount"
