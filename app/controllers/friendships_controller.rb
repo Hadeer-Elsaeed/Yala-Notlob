@@ -6,6 +6,9 @@ class FriendshipsController < ApplicationController
   def index
     @friendships = Friendship.all
   end
+  def hi
+    render "hiiii"
+  end
 
   # GET /friendships/1
   # GET /friendships/1.json
