@@ -29,14 +29,17 @@ class OrdersController < ApplicationController
     puts params
     friends=params[:friends]
     groups=params[:groups]
-    puts params[:friends]
-    puts friends
+    check= params[:check]
+  
+    # puts params[:friends]
+    # puts friends
     @order.User_id = current_user.id if current_user
     @order.status="waiting"
     @myusers=User.all
-    if params[:check] == 0
+      #  byebug
+    if check == nil
     friends.each do |friend|
-      puts friend
+      # puts friend
       @order_friend=OrderFriend.new
       @order_friend.order=@order
       @order_friend.user=@myusers.find_by(id:friend)
@@ -44,15 +47,17 @@ class OrdersController < ApplicationController
       Friendship.where(:follower_id => friend).where(:followee_id => @order.User_id).update_all("status = 'invited'")
     end
     end
-      # if params[:check] == 1
-      #    @mygroups=Group.all
-      #   groups.each do |group|
-      #     @order_group=OrderGroup.new
-      #      @order_group.order=@order
-      #      @order_group.group=@mygroups.find_by(id:group)
-      #      @order_group.save
-      #   end  
-      # end
+      if check == "on"
+         @mygroups=Group.all
+        groups.each do |group|
+          @order_group=OrderGroup.new
+           @order_group.order=@order
+           @order_group.group=@mygroups.find_by(id:group)
+           @order_group.save
+          Friendship.where(:followee_id => current_user.id).where(:group_id => group).update_all("status = 'invited'")
+
+        end  
+      end
 
     respond_to do |format|
       if @order.save

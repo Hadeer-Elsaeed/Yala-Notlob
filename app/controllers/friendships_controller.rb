@@ -18,6 +18,7 @@ class FriendshipsController < ApplicationController
   # GET /friendships/new
   def new
     @friendship = Friendship.new
+    @friendships = Friendship.all
   end
 
   # GET /friendships/1/edit
