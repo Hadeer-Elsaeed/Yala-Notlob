@@ -13,17 +13,18 @@
       <section  class="offset-1 col-6" style="border:2px solid lightgray;border-radius: 5px;">
         <h2 class="text-center text-info">Friends activity</h2>
         <!-- Friends activity -->
-        
-         <%if @friends != nil%>
-        <% @friends.each do |friend|%>
-        <h6><%= friend.name%> has created an order for
-        <% @friends_order.each do |order|%>
-        <%= order.meal%> from <%= order.resturant%>
-        <%end %>
-        </h6>
-        
-        <%end%>
-        <%end %>
-        
+        <%if @orders != nil%>
+          <% @orders.each do |order|%>
+          <% @friends_name = User.find_by_id(order.User_id)%>
+            <h6>
+              <%= @friends_name.name%> has created an order for 
+                <% @friends_order = Order.select("meal","created_at","resturant").where("User_id=?",@friends_name.id).last%>
+                  <%if @friends_order != nil%>
+                  <%= @friends_order.meal%> from 
+                  <%= @friends_order.resturant%>
+                  <%end%>
+            </h6>
+          <%end%>
+          <%end%>
       </section>
     </div>

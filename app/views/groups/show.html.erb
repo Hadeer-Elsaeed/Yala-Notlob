@@ -1,27 +1,12 @@
 
-
-<<<<<<< HEAD
-<p>
-  <strong>User:</strong>
-  <%= @group.User_id %>
-</p>
-<p>
-  <strong>Friends in the group: </strong>
-  <% @frinds_group.each do |friend|%>
-  <%= @frind.User_id %>
-  <%= @frinds_group%>
-  <%end%>
-</p>
-
-=======
 <h1 class="text-center login_h2 m-5">Groups Show</h1>
->>>>>>> 8e7253f036013fe89cb21e5ca09cd58428bf7d38
 
 <table class="table">
   <thead>
     <tr>
       <th class="text-info">Name</th>
       <th class="text-info">User</th>
+      <th class="text-info">Friends in the group </th>
     </tr>
   </thead>
 
@@ -29,6 +14,12 @@
       <tr>
         <td><%= @group.name %></td>
         <td><%= @group.User_id %></td>
+        <td>
+          <% @frinds_group.each do |friend|%>
+          <%= @frind.User_id %>
+          <%= @frinds_group%>
+  <%end%>
+        </td>
   </tbody>
 </table>
 

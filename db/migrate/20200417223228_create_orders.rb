@@ -6,7 +6,7 @@ class CreateOrders < ActiveRecord::Migration[6.0]
       t.string :meal
       t.string :resturant
       t.string :status
-      t.references :User, null: false, foreign_key: true
+      t.references :User, null: false, foreign_key: true ,on_delete: :cascade
 
       t.timestamps
     end
