@@ -82,6 +82,9 @@ class OrdersController < ApplicationController
     # @inv_user_info = []
     @owner_id = Order.find(params[:id]).User_id 
     @invited_users =  Friendship.where(:User_id => @owner_id)
+    @invited_users.each do |invited_users|
+    puts invited_users.User_id
+    end
       respond_to do |format|
       format.html 
       format.js
