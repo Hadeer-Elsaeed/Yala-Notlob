@@ -66,11 +66,11 @@ ActiveRecord::Schema.define(version: 2020_04_29_164101) do
     t.string "item"
     t.integer "amount"
     t.integer "price"
-    t.integer "comment"
     t.integer "user_id", null: false
     t.integer "order_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "comment"
     t.index ["order_id"], name: "index_order_details_on_order_id"
     t.index ["user_id"], name: "index_order_details_on_user_id"
   end
