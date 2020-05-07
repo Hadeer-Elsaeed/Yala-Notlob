@@ -7,7 +7,6 @@ class OrderDetailsController < ApplicationController
     @order = Order.find(params[:order_id])
     @order_detail = @order.order_details.all
     # @order_detail = OrderDetail.all
-    # @user = @order_detail[:user_id]
     # @user_name = User.find(uid=@user)
   end
 
@@ -26,7 +25,6 @@ class OrderDetailsController < ApplicationController
     # creatte empty instance to use in form""model:"
     # @order_detail = OrderDetail.new
     @order =Order.find(params[:order_id])
-    puts "order new details controlller*****************************************************************************"
     puts @order 
     # it is empy!!!!!!why?! 
 

@@ -94,7 +94,7 @@ class OrdersController < ApplicationController
     end
   end
 
-  def invited_modal 
+  def invited 
     puts "that is modal :))))))))))))))))))))))))))))))))"  
     # @inv_user_info = []
     @owner_id = Order.find(params[:id]).User_id 
@@ -108,7 +108,7 @@ class OrdersController < ApplicationController
     end
     puts"end:)))))))))))))))))))))))))))))))"
   end
-  def joined_modal
+  def joined
     @user = Order.find(params[:id]).User_id    
     @joined_users =  Friendship.where(:User_id => @user , :status => "joined")  
     @joined_users.each do |joined_users| 
