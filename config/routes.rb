@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   # get 'status'
   get 'orders/status'
   get '/modal/:id', to: 'modal#show'
-  # get '/user/:id', to ''
+  get '/user/:id', to: 'users#show'
 
   resources :friendships
 
