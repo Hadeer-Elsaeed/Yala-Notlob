@@ -1,3 +1,5 @@
+<br/>
+<%= render 'add_friend', locals: { group: @group} %>
 
 <h1 class="text-center login_h2 m-5">Groups Show</h1>
 
@@ -5,7 +7,6 @@
   <thead>
     <tr>
       <th class="text-info">Name</th>
-      <th class="text-info">User</th>
       <th class="text-info">Friends in the group </th>
     </tr>
   </thead>
@@ -14,10 +15,26 @@
       <tr>
         <td><%= @group.name %></td>
         <td>
-          <% @frinds_group.each do |friend|%>
-          <%= @frind.User_id %>
-          <%= @frinds_group%>
-  <%end%>
+        <%if @friends_group != nil%>
+          <% @friends_group.each do |friend|%>
+            <%if friend != nil%>
+          <% @user = User.where("id=?", friend.follower_id).first%>
+          
+          <div style="display: inline-block; margin: 10px;">
+            
+            <% if @user.image.attached?%>
+              <%= image_tag(@user.image, {:style => "width:80px;height:80px;border-radius:50%"}) %>
+              <%else%>
+                <%= image_tag("user.jpg", {:style => "width:80px;height:80px;border-radius:50%"})%>
+              <%end%>
+              <figcaption style="text-align:center;"><%= @user.name %></figcaption>
+              <figcaption style="text-align:center;">
+                <%= link_to 'remove', remove_group_path(@group,@user.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+              </figcaption>
+        </div>
+          <%end%>
+        <%end%>
+        <%end%>
         </td>
   </tbody>
 </table>

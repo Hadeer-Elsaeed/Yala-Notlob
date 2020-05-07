@@ -14,7 +14,13 @@ Rails.application.routes.draw do
       get 'joined_modal' 
     end
   end
-  resources :groups
+  
+  resources :groups do
+    member do
+       delete 'remove/:friend_id', :action => 'remove',:as => 'remove'
+       post 'add_friend', :action => 'add_friend'
+      end
+  end
   # get 'new', to: 'orders#new'
   devise_for :users, controllers: { 
     omniauth_callbacks: 'users/omniauth'
