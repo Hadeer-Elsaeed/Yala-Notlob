@@ -6,7 +6,7 @@ class GroupsController < ApplicationController
   def index
     @groups = Group.where("User_id=?",current_user.id)
     @new_group = Group.new
-    @new_friend = Friendship.find(2);
+    # @new_friend = Friendship.find(2);
     
     @first_group = Group.first
     if @first_group

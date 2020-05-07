@@ -45,6 +45,32 @@
                 <li class="nav-item ml-auto"><%= link_to "Sign in", signin_path, class: "nav-link btn btn-success text-light" %></li>
               <% end %>
             </ul>
+
+            <ul class="navbar-nav mr-auto">
+            <li class="nav-item active" id="Notification" >
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <!-- Single button -->
+                        <div class="btn-group pull-right top-head-dropdown">
+                        <button type="button" id="userNotification" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Notifications <span class="caret badge badge-danger" id="NumbersOfNotification"><%=@numbers_of_unseen_notifications%></span>
+                        </button>
+                        <ul id="NotificationList" class="dropdown-menu dropdown-menu-right">
+                            <% for notification in @my_notifications %>
+                                <li>
+                                <a href="#" class="top-text-block">
+                                    <div class="top-text-heading"><b><%= notification.order.User.email%></b> invited You to Have a <%= notification.order.meal%></div>
+                                    <div class="top-text-light"><%= notification.created_at.strftime("%Y-%m-%d: %I:%M %p")%></div>
+                                </a> 
+                                </li>
+                            <% end %>
+                        </ul>
+                        </div>
+                    </div>
+                </div>
+            </li>
+
+        </ul>
         </div>
       </nav>
 

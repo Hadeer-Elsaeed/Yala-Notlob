@@ -59,7 +59,7 @@ class OrdersController < ApplicationController
 
         end  
       end
-
+      send_notifications(@friends, @order)
     respond_to do |format|
       if @order.save
         format.html { redirect_to orders_url, notice: 'Order was successfully created.' }
@@ -126,6 +126,15 @@ class OrdersController < ApplicationController
     end
   end
   private
+
+    # Send Notifications To User
+    def send_notifications(friend, order)
+      @myusers.each do |order_friend|
+        NotificationChannel.broadcast_to(friend, sender: current_user.email, meal: order.meal)
+        @order_friend = OrderFriend.new(:order_id => order.id, :user_id => order_friend.id)
+        @order_friend.save
+      end
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_order
       @order = Order.find(params[:id])
