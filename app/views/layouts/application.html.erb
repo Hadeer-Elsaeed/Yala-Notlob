@@ -30,8 +30,6 @@
             </ul>
             <ul class="navbar-nav ml-auto">
               <% if user_signed_in? %>
-                <li class="nav-item ml-auto"><%= link_to "Log out", signout_path, method: :delete, class: "nav-link btn btn-danger text-light" %></li>
-                <li class="nav-item ml-auto"><%= link_to "Edit Profile", edit_path, class: "nav-link btn btn-info text-light mr-1 ml-1" %></li>
                 <li class="nav-item ml-2">
                     <%if(current_user.image.present?)%>
                       <%=image_tag(current_user.image, size:"50x50",class: "rounded-circle mr-1")%>
@@ -40,6 +38,8 @@
                     <%end%>
                 </li>      
                 <li class="nav-item ml-2 btn text-light "> Welcome: <strong class="text-success m-2"><%= current_user.name %></strong></li>
+                <li class="nav-item ml-auto"><%= link_to "Log out", signout_path, method: :delete, class: "nav-link btn btn-danger text-light" %></li>
+                <li class="nav-item ml-auto"><%= link_to "Edit Profile", edit_path, class: "nav-link btn btn-info text-light mr-1 ml-1" %></li>
               <% else %>
                 <li class="nav-item ml-auto"><%= link_to "Sign up", signup_path, class: "nav-link btn btn-primary text-light mr-1" %></li>
                 <li class="nav-item ml-auto"><%= link_to "Sign in", signin_path, class: "nav-link btn btn-success text-light" %></li>
@@ -56,13 +56,16 @@
                             Notifications <span class="caret badge badge-danger" id="NumbersOfNotification"><%=@numbers_of_unseen_notifications%></span>
                         </button>
                         <ul id="NotificationList" class="dropdown-menu dropdown-menu-right">
+                        <%  notification = @my_notifications.blank? %>
+                        <% if notification == false %>
                             <% for notification in @my_notifications %>
                                 <li>
-                                <a href="#" class="top-text-block">
-                                    <div class="top-text-heading"><b><%= notification.order.User.email%></b> invited You to Have a <%= notification.order.meal%></div>
+                                <p href="#" class="top-text-block">
+                                    <div class="top-text-heading"><b><%= notification.order.User.name%></b> invited You to Have a <%= notification.order.meal%></div>
                                     <div class="top-text-light"><%= notification.created_at.strftime("%Y-%m-%d: %I:%M %p")%></div>
-                                </a> 
+                                </p> 
                                 </li>
+                            <% end %>
                             <% end %>
                         </ul>
                         </div>
