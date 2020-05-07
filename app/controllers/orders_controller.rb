@@ -24,6 +24,7 @@ class OrdersController < ApplicationController
   
   # POST /orders
   # POST /orders.json
+  # //esraa
   def create
     @order = Order.new(order_params)
     puts params
@@ -86,6 +87,7 @@ class OrdersController < ApplicationController
 
   # DELETE /orders/1
   # DELETE /orders/1.json
+  
   def destroy
     @order.destroy
     respond_to do |format|
