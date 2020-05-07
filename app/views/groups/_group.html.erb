@@ -1,8 +1,12 @@
 
 <tr>
-    <th><%= link_to group.name, group%></th>   
+    <th><%= link_to group.name, group%></th>  
+    <th><%=link_to '', group,
+     class:"fas fa-user-plus text text-success"%></th> 
+    <!--
     <th><%=link_to '', {controller: :friendships, action: :index},
      class:"fas fa-user-plus text text-success"%></th>
+     -->
     <th><%= link_to '', group, method: :delete, data: { confirm: 'Are you sure?' },class: "fas fa-times text text-danger"%></th> 
 </tr>
 

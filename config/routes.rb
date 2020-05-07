@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   
   resources :groups do
     member do
-       delete 'remove/:friend_id', :action => 'remove',:as => 'remove'
+       delete 'remove/:friend_id', :action => 'remove_friend',:as => 'remove'
        post 'add_friend', :action => 'add_friend'
       end
   end

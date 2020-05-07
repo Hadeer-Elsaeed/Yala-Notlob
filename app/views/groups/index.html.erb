@@ -16,27 +16,24 @@
             </table>
         </div>
       </section>
+      
       <section  class="offset-1 col-6" style="border:2px solid lightgray;border-radius: 5px;">
         <div>
-          <h2 class="text-center text-info">group</h2>
+          <h2 class="text-center text-info">Friends Group</h2>
           <!-- Add friend to group -->
+          <!--
         <div style="text-align:center;">
         <%= form_with(model: @new_friend, method: 'PUT') do |f| %>
           <%= f.email_field :virtual_attribute , class:'form-control',placeholder: "Add friend by email to the geoup"%>
           <br/>
           <%= f.submit "Add" ,class: "btn btn-primary"%>
         <% end %>
+        -->
          <!-- <%= render 'friendships/form', friendship: @friendship %> -->
           </div>
           
         <!-- Group Friends-->
-        <div style="display: inline-block; margin: 10px;">
-            <%= image_tag("user.jpg", {:style => "width:80px;height:80px;border-radius:50%"}) %>
-              <figcaption style="text-align:center;">friend1</figcaption>
-              <figcaption style="text-align:center;">
-                <%# <%= link_to 'remove', latest_orders, method: :delete, data: { confirm: 'Are you sure?' }  %>
-              </figcaption>
-        </div>
         </div>
       </section>
+      
 </div>

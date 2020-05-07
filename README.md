@@ -6,9 +6,9 @@
 - Login & Registerantion (page 1,2 )...[Mohamed Abdullah]
 
 
-- Orders & Groups (page 4,5 ) ... [Mariam Mohamed]
+- Home page  & Groups (page 3,4 ) ... [Mariam Elfeky]
 
-- Home page & Add order (page 3,6) ... [Esraa AbdElaziz]
+- Friends & Add order (page 5,6) ... [Esraa AbdElaziz]
 
 - Orders (page 7) .. [Hadeer Elsaeed]
 

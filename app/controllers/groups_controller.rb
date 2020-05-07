@@ -94,7 +94,7 @@ class GroupsController < ApplicationController
     
   end
 
-  def remove
+  def remove_friend
     f = Friendship.where(["group_id = ? and follower_id = ?", params[:id],params[:friend_id]]).update_all( group_id: nil )
     respond_to do |format|
       format.html { redirect_to group_url, notice: 'Friend was successfully Removed.' }
