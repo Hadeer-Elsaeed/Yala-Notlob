@@ -10,40 +10,28 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="field col-2">
     <%= form.label :item %>
     <%= form.text_field :item %>
   </div>
 
-  <div class="field">
+  <div class="field col-2">
     <%= form.label :amount %>
     <%= form.number_field :amount %>
   </div>
 
-  <div class="field">
+  <div class="field col-2">
     <%= form.label :price %>
     <%= form.number_field :price %>
   </div>
 
-  <div class="field">
+  <div class="field col-2">
     <%= form.label :comment %>
     <%= form.text_field :comment %>
   </div>
-
-  <div class="field"> 
-   <p><%= @order.User_id%></p>
-    <%= form.label :User_id %>
-    <%= form.text_field :User_id %>
-
-  </div>
-
-  <div class="field">
-    <%= form.label :order_id %>
-    <%= form.text_field :order_id %>
-  </div>
   <br/>
   <br/>
-  <div class="actions btn btn-success" style="margin:auto;">
+  <div class="actions btn" style="margin:auto;">
     <%= form.submit %>
   </div>
 <% end %>

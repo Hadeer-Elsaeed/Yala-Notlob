@@ -39,7 +39,7 @@
       <% @user = Order.find(id = @ord).User_id %>      
       <% @joined = Friendship.where(:User_id => @user , :status => "joined").count %>
       <p><%= link_to (@joined).to_s+'friends joined,click here to view',joined_order_path(@ord) , {:style=>'margin-top:50px;margin-right:10px;',method: "post" ,:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window'}  %></p>
-      <% @invited = Friendship.where(:User_id => @user).count %>   
+      <% @invited = OrderFriend.where(:order_id => @ord).count %>   
       <%= link_to (@invited).to_s+' friends invited click to view',invited_order_path(@ord),{:style=>'margin-top:50px;margin-right:10px;',method: "post" ,:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window'}  %>
 
       <div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
