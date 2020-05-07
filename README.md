@@ -1,18 +1,18 @@
-Design Database [all team]
+- Design Database [all team]
 
-Implementation Database...[Esraa - Hadeer]
-
-
-Login & Registerantion (page 1,2 )...[Mohamed Abdullah]
+- Implementation Database...[Esraa - Hadeer]
 
 
-Orders & Groups (page 4,5 ) ... [Mariam Mohamed]
+- Login & Registerantion (page 1,2 )...[Mohamed Abdullah]
 
-Home page & Add order (page 3,6) ... [Esraa AbdElaziz]
 
-orders (page 7) .. [Hadeer Elsaeed]
+- Orders & Groups (page 4,5 ) ... [Mariam Mohamed]
 
-Order Details (page 8) .. [Asmaa Alaa]
+- Home page & Add order (page 3,6) ... [Esraa AbdElaziz]
 
-Notification (page 9)
+- Orders (page 7) .. [Hadeer Elsaeed]
+
+- Order Details (page 8) .. [Asmaa Alaa]
+
+- Notification (page 9)
 
