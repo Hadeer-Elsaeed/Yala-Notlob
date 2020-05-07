@@ -56,5 +56,5 @@ Things you may want to cover:
 
 - Order Details (page 8) .. [Asmaa Alaa]
 
-- Notification (page 9)
+- Notification (page 9) .. [Hadeer]
 
