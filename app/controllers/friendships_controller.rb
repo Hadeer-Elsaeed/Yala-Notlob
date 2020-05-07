@@ -56,6 +56,13 @@ class FriendshipsController < ApplicationController
   # PATCH/PUT /friendships/1
   # PATCH/PUT /friendships/1.json
   def update
+    # @friendship = Friendship.new()
+    @user=User.find_by(email: friendship_params[:virtual_attribute])
+    notAfollower=current_user.followers.find_by(email: friendship_params[:virtual_attribute])
+      if @user != nil and  notAfollower != nil and @user !=current_user
+        @user.group_id = "1";
+      end
+        
     respond_to do |format|
       if @friendship.update(friendship_params)
         format.html { redirect_to @friendship, notice: 'Friendship was successfully updated.' }

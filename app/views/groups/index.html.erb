@@ -1,7 +1,8 @@
 <br/>
 <!--Add New Group -->
+<section >
 <%= render 'form' , group: @new_group%>
-
+</section>
 <br/>
 <div class="row" style="width: 100%;">
       <section  class="col-4" style="margin-left: 20px">
@@ -20,7 +21,7 @@
           <h2 class="text-center text-info">group</h2>
           <!-- Add friend to group -->
         <div style="text-align:center;">
-        <%= form_with(model: @new_friend) do |f| %>
+        <%= form_with(model: @new_friend, method: 'PUT') do |f| %>
           <%= f.email_field :virtual_attribute , class:'form-control',placeholder: "Add friend by email to the geoup"%>
           <br/>
           <%= f.submit "Add" ,class: "btn btn-primary"%>
