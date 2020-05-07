@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :set_order, only: [:show, :edit, :update, :destroy]
+  before_action :set_order, only: [:show, :edit, :update, :destroy,:invited]
 
   # GET /orders
   # GET /orders.json
@@ -96,13 +96,14 @@ class OrdersController < ApplicationController
     end
   end
 
-  def invited_modal 
+  def invited 
     puts "that is modal :))))))))))))))))))))))))))))))))"  
-    # @inv_user_info = []
-    @owner_id = Order.find(params[:id]).User_id 
-    @invited_users =  Friendship.where(:User_id => @owner_id)
+    
+    @owner_id = @order.User_id 
+    @invited_users = OrderFriend.where(:order_id=>@order)
+    @order_group = OrderGroup.where(:order_id=>@order)
     @invited_users.each do |invited_users|
-    puts invited_users.User_id
+    
     end
       respond_to do |format|
       format.html 
@@ -110,7 +111,7 @@ class OrdersController < ApplicationController
     end
     puts"end:)))))))))))))))))))))))))))))))"
   end
-  def joined_modal
+  def joined
     @user = Order.find(params[:id]).User_id    
     @joined_users =  Friendship.where(:User_id => @user , :status => "joined")  
     @joined_users.each do |joined_users| 

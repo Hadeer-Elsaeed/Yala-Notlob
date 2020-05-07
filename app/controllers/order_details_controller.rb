@@ -7,7 +7,6 @@ class OrderDetailsController < ApplicationController
     @order = Order.find(params[:order_id])
     @order_detail = @order.order_details.all
     # @order_detail = OrderDetail.all
-    # @user = @order_detail[:user_id]
     # @user_name = User.find(uid=@user)
   end
 
@@ -26,7 +25,6 @@ class OrderDetailsController < ApplicationController
     # creatte empty instance to use in form""model:"
     # @order_detail = OrderDetail.new
     @order =Order.find(params[:order_id])
-    puts "order new details controlller*****************************************************************************"
     puts @order 
     # it is empy!!!!!!why?! 
 
@@ -42,11 +40,8 @@ class OrderDetailsController < ApplicationController
   def create
     @order = Order.find(params[:order_id])
     @order_detail = @order.order_details.create(order_detail_params)
-   
-# end
-#   def create
-#     @order_detail = OrderDetail.new(order_detail_params)
-
+    @order_detail.user_id =  current_user.id
+    @order_detail.order_id = @order.id
     respond_to do |format|
       if @order_detail.save
         format.html { redirect_to order_order_details_path, notice: 'Order detail was successfully created.' }
@@ -77,7 +72,7 @@ class OrderDetailsController < ApplicationController
   def destroy
     @order_detail.destroy
     respond_to do |format|
-      format.html { redirect_to order_order_details_path, notice: 'Order detail was successfully destroyed.' }
+      format.html { redirect_to order_order_details_path }
       format.json { head :no_content }
     end
   end

@@ -10,8 +10,8 @@ Rails.application.routes.draw do
   resources :orders do
     resources :order_details 
     member do
-      get 'invited_modal' 
-      get 'joined_modal' 
+      post 'invited' 
+      post 'joined'
     end
   end
   
