@@ -24,7 +24,7 @@ gem 'omniauth-google-oauth2'
 gem 'devise_token_auth'
 gem 'activerecord-session_store'
 gem 'world-flags', '~> 0.6.5'
-gem 'carrierwave', '~> 2.0'
+gem 'carrierwave', '~> 2.1'
 
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', '~> 1.4'
